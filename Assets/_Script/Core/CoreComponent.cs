@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CoreComponent : MonoBehaviour
 {
-    Core core;
-    Vector2 workspace;
+    private Core core;
+    protected Vector3 workspace;
 
     protected virtual void Awake()
     {

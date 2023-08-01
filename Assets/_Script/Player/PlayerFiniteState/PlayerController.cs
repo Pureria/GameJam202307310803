@@ -41,6 +41,24 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         stateMachine.LogicUpdate();
+
+        if(!CheckFrameLeftPosition(transform.position.x))
+        {
+            transform.position = new Vector3(FramePosition.LeftPosition, transform.position.y, 0.0f);
+        }
+        else if(!CheckFrameRightPosition(transform.position.x))
+        {
+            transform.position = new Vector3(FramePosition.RightPosition, transform.position.y, 0.0f);
+        }
+
+        if (!CheckFrameTopPosition(transform.position.y))
+        {
+            transform.position = new Vector3(transform.position.x, FramePosition.TopPosition, 0.0f);
+        }
+        else if(!CheckFrameBottomPosition(transform.position.y))
+        {
+            transform.position = new Vector3(transform.position.x, FramePosition.BottomPosition, 0.0f);
+        }
     }
 
     private void FixedUpdate()
@@ -52,5 +70,41 @@ public class PlayerController : MonoBehaviour
     #region Other Function
     public void AnimationFinishedTrigger() { stateMachine.currentState.AnimationFinishedTrigger(); }
     public void AnimationTrigger() { stateMachine.currentState.AnimationTrigger(); }
+
+    public bool CheckFrameLeftPosition(float checkPositionLeft)
+    {
+        bool ret = false;
+        if (checkPositionLeft > FramePosition.LeftPosition)
+            ret = true;
+
+        return ret;
+    }
+
+    public bool CheckFrameRightPosition(float checkPositionRight)
+    {
+        bool ret = false;
+        if (checkPositionRight < FramePosition.RightPosition)
+            ret = true;
+
+        return ret;
+    }
+
+    public bool CheckFrameTopPosition(float checkPositionTop)
+    {
+        bool ret = false;
+        if (checkPositionTop < FramePosition.TopPosition)
+            ret = true;
+
+        return ret;
+    }
+
+    public bool CheckFrameBottomPosition(float checkPositionBottom)
+    {
+        bool ret = false;
+        if (checkPositionBottom > FramePosition.BottomPosition)
+            ret = true;
+
+        return ret;
+    }
     #endregion
 }

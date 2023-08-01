@@ -15,6 +15,5 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnMousePosition(InputAction.CallbackContext context)
     {
         targetPosition = context.ReadValue<Vector2>();
-        Debug.Log(targetPosition);
     }
 }
