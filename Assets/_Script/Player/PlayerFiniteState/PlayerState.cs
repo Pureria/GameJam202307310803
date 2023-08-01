@@ -9,6 +9,7 @@ public class PlayerState
     protected PlayerData playerData;
     protected bool isAnimationFinished;
     protected Vector3 workspace;
+    protected float stateStartTime;
 
     private string animBoolName;
 
@@ -24,6 +25,7 @@ public class PlayerState
     {
         isAnimationFinished = false;
         player._anim.SetBool(animBoolName, true);
+        stateStartTime = Time.time;
     }
 
     public virtual void Exit()

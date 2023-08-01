@@ -2,24 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : PlayerState
+public class PlayerInvincible : PlayerState
 {
-    public PlayerMove(PlayerController player,PlayerStateMachine stateMachine,PlayerData playerData,string animBoolName):base(player,stateMachine,playerData,animBoolName)
+    public PlayerInvincible(PlayerController player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     { }
 
     public override void Enter()
     {
         base.Enter();
+        player.Damage?.SetCanDamage(false);
+        player.Status?.Respawn();
+        player.transform.position = playerData.SpawnPosition;
     }
 
     public override void Exit()
     {
         base.Exit();
+        player.Damage.SetCanDamage(true);
     }
 
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+        if (stateStartTime + playerData.InvincibleTime < Time.time)
+            stateMachine.ChangeState(player.MoveState);
+
     }
 
     public override void PhycsUpdate()

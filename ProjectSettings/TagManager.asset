@@ -44,3 +44,9 @@ TagManager:
   - name: EnemyUI
     uniqueID: 2668202045
     locked: 0
+  - name: EnemyShot
+    uniqueID: 287339317
+    locked: 0
+  - name: Player
+    uniqueID: 3631335857
+    locked: 0

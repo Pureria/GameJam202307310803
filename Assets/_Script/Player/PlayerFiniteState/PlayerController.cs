@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public PlayerInputHandler inputHandler { get; private set; }
 
     public PlayerMove MoveState { get; private set; }
+    public PlayerDead DeadState { get; private set; }
+    public PlayerInvincible InvincibleState { get; private set; }
     #endregion
 
     #region Variables
@@ -19,6 +21,12 @@ public class PlayerController : MonoBehaviour
     public Core Core { get; private set; }
     public Movement Movement { get => movement ?? Core.GetCoreComponent(ref movement); }
     private Movement movement;
+
+    public Status Status { get => status ?? Core.GetCoreComponent(ref status); }
+    private Status status;
+
+    public Damage Damage { get => damage ?? Core.GetCoreComponent(ref damage); }
+    private Damage damage;
     #endregion
 
     #region Unity Callback Function
@@ -26,6 +34,9 @@ public class PlayerController : MonoBehaviour
     {
         stateMachine = new PlayerStateMachine();
         MoveState = new PlayerMove(this, stateMachine, playerData, "move");
+        DeadState = new PlayerDead(this, stateMachine, playerData, "dead");
+        InvincibleState = new PlayerInvincible(this, stateMachine, playerData, "invincible");
+
     }
 
     private void Start()
@@ -34,6 +45,7 @@ public class PlayerController : MonoBehaviour
         Core = GetComponentInChildren<Core>();
         inputHandler = GetComponent<PlayerInputHandler>();
 
+        Status?.Initialize(1.0f);
         //stateMachineÇÃèâä˙âªèàóù
         stateMachine.Initialize(MoveState);
     }
@@ -58,6 +70,12 @@ public class PlayerController : MonoBehaviour
         else if(!CheckFrameBottomPosition(transform.position.y))
         {
             transform.position = new Vector3(transform.position.x, FramePosition.BottomPosition, 0.0f);
+        }
+
+        //TODO::É_ÉÅÅ[ÉWîªíË
+        if(Status.isDead && stateMachine.currentState != DeadState)
+        {
+            stateMachine.ChangeState(DeadState);
         }
     }
 

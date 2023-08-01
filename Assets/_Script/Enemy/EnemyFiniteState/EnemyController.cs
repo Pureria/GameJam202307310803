@@ -4,15 +4,34 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    #region State Variables
+    #endregion
+
+    #region Variables
+    #endregion
+
+    #region Unity Callback Function
+    private void Awake()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
         
     }
+
+    private void Update()
+    {
+        
+    }
+
+    private void FixedUpdate()
+    {
+        
+    }
+    #endregion
+
+    #region Other Function
+    #endregion
 }

@@ -39,9 +39,15 @@ public class Status : CoreComponent
 
     public void subHealth(float sub)
     {
-        currentHP -= Mathf.Abs(sub) * -1.0f;
+        currentHP += Mathf.Abs(sub) * -1.0f;
         if (currentHP <= 0)
             isDead = true;
+    }
+
+    public void Respawn()
+    {
+        currentHP = maxHP;
+        isDead = false;
     }
     #endregion
 }
