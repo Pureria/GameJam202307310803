@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Damage : CoreComponent
 {
+    public bool isDamage { get; private set; }
+    public float damageTime { get; private set; }
+
     private Status Status { get => status ?? core.GetCoreComponent(ref status); }
     private Status status;
 
@@ -13,6 +16,7 @@ public class Damage : CoreComponent
     {
         base.Awake();
         canDamage = true;
+        isDamage = false;
     }
 
     protected override void Start()
@@ -36,9 +40,15 @@ public class Damage : CoreComponent
     private void SetFinalDamage()
     {
         if(canDamage)
+        {
+            isDamage = true;
+            damageTime = Time.time;
             Status?.subHealth(currentDamage);
+        }
     }
 
     public void SetCanDamage(bool canDamage) => this.canDamage = canDamage;
+
+    public void UseDamageFlg() => isDamage = false;
     #endregion
 }

@@ -20,4 +20,7 @@ public class PlayerData : ScriptableObject
 
     [Header("Respawn Invincible Time"),Tooltip("リスポーンステータスの時間")]
     public float InvincibleTime = 1.5f;
+
+    [Header("Attack Damage")]
+    public float AttackDamage = 1.0f;
 }

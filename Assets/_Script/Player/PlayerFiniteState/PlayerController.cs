@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance?.SetPlayer(this.gameObject);
         _anim = GetComponent<Animator>();
         Core = GetComponentInChildren<Core>();
         inputHandler = GetComponent<PlayerInputHandler>();

@@ -49,5 +49,7 @@ public class Status : CoreComponent
         currentHP = maxHP;
         isDead = false;
     }
+
+    public float GetNowHP() { return currentHP; }
     #endregion
 }
