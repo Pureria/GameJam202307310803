@@ -10,6 +10,8 @@ public class EnemyState
 
     protected bool isAnimationFinished;
 
+    protected Vector3 workspace;
+
     private string animBoolName;
 
     public EnemyState(EnemyController enemy,EnemyStateMachine stateMachine,EnemyData enemyData,string animBoolName)

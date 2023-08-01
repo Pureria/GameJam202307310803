@@ -18,10 +18,44 @@ public class EnemyData : ScriptableObject
     [Tooltip("ammo1のオブジェクトとスピード")]
     public List<EnemyShotIntel> shotIntel = new List<EnemyShotIntel>();
 
+    [Tooltip("Shot1の左右弾ループ数")]
+    public int EnemyShot1Count = 3;
+
+    [Tooltip("Shot2の左右弾ループ数")]
+    public int EnemyShot2Count = 2;
+
+    [Tooltip("Shot2の弾をずらす距離")]
+    public float EnemyShot2AddX = 0.8f;
+
+    [Header("Enemy Attack Pattern")]
+    public List<EnemyShotPattern> shotPattern = new List<EnemyShotPattern>();
+
     [System.Serializable]
     public class EnemyShotIntel
     {
         public GameObject shotObject;
         public float speed;
+    }
+
+    [System.Serializable]
+    public class EnemyShotPattern
+    {
+        public List<EnemyShotModel> attackType = new List<EnemyShotModel>();
+    }
+
+    [System.Serializable]
+    public class EnemyShotModel
+    {
+        public AttackType type;
+        public float nextStateInterval = 1.0f;
+    }
+
+    public enum AttackType
+    {
+        Attack1,
+        Attack2,
+        LazerStart,
+        LazerStop,
+        AttackCount
     }
 }

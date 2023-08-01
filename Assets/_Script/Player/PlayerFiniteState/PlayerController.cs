@@ -125,5 +125,7 @@ public class PlayerController : MonoBehaviour
 
         return ret;
     }
+
+    public PlayerData GetPlayerData() { return playerData; }
     #endregion
 }

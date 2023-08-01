@@ -8,6 +8,8 @@ public class EnemyController : MonoBehaviour
     public EnemyStateMachine stateMachine;
 
     public EnemyIdle IdleState { get; private set; }
+    public EnemyShot1 Shot1State { get; private set; }
+    public EnemyShot2 Shot2State { get; private set; }
     #endregion
 
     #region Unity Variables
@@ -20,6 +22,10 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField]
     private EnemyData enemyData;
+
+    public Transform ShotPosition;
+
+    public EnemyData.EnemyShotPattern nowShotPattern { get; private set; }
 
     private Core Core;
     public Damage Damage { get => damage ?? Core.GetCoreComponent(ref damage); }
@@ -37,6 +43,11 @@ public class EnemyController : MonoBehaviour
     {
         stateMachine = new EnemyStateMachine();
         IdleState = new EnemyIdle(this, stateMachine, enemyData, "idle");
+        Shot1State = new EnemyShot1(this, stateMachine, enemyData, "idle");
+        Shot2State = new EnemyShot2(this, stateMachine, enemyData, "idle");
+
+        nowShotPattern = enemyData.shotPattern[0];
+        IdleState.SetLockTime(enemyData.EnemyShotInterval);
     }
 
     private void Start()
@@ -79,15 +90,36 @@ public class EnemyController : MonoBehaviour
             }
         }
 
-        uiController.UpdateHPSlider(Status.GetNowHP());
+        stateMachine.LogicUpdate();
+        uiController.UpdateHPSlider(Status.GetNowHP(),Damage.damageTime);
+
+        //デバッグ用
+        if(Input.GetKey(KeyCode.UpArrow))
+        {
+            Damage?.AddDamage(5.0f);
+        }
     }
 
     private void FixedUpdate()
     {
-        
+        stateMachine.PhycsUpdate();
     }
     #endregion
 
     #region Other Function
+    public GameObject InstantiateAmmo(GameObject ammoObj, Quaternion rotation)
+    {
+        GameObject ret = null;
+        ret = Instantiate(ammoObj, ShotPosition.position, rotation);
+        return ret;
+    }
+
+    public void CheckAttackPattern()
+    {
+        int cnt = enemyData.shotPattern.Count - 1;
+        float current = enemyData.EnemyHP / cnt;
+        int num = (int)(Status.GetNowHP() / current);
+        nowShotPattern = enemyData.shotPattern[cnt - num];
+    }
     #endregion
 }

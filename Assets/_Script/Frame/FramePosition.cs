@@ -9,16 +9,34 @@ public class FramePosition : MonoBehaviour
     public static float TopPosition = 0.0f;
     public static float BottomPosition = 0.0f;
 
+    public static FramePosition Instance;
+
+    public bool isChangedScale { get; private set; }
+    private Vector3 currentScale;
+    private Vector3 defScale;
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            GameObject.Destroy(this.gameObject);
+    }
     private void Start()
     {
+        defScale = transform.localScale;
+        isChangedScale = true;
         SetPosition();
     }
 
     private void Update()
     {
-        //仮処理
-        //大きさが変更されたときなどに呼び出すようにする
         SetPosition();
+
+        if(!isChangedScale)
+        {
+            //TODO::スケール変更処理
+        }
     }
 
     private void SetPosition()
@@ -36,4 +54,16 @@ public class FramePosition : MonoBehaviour
     public float GetTopPosition() { return TopPosition; }
 
     public float GetBottomPosition() { return BottomPosition; }
+
+    public void ChangeScale(float xScale,float yScale)
+    {
+        isChangedScale = false;
+        currentScale = new Vector3(xScale, yScale, 0);
+    }
+
+    public void ResetScale()
+    {
+        isChangedScale = false;
+        currentScale = defScale;
+    }
 }
