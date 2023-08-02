@@ -112,7 +112,7 @@ public class EnemyController : MonoBehaviour
         uiController.UpdateHPSlider(Status.GetNowHP(),Damage.damageTime);
 
         float nowHp = Status.GetNowHP();
-        if(nowHp <= 0)
+        if(nowHp <= 0 && stateMachine.currentState != DeadState)
         {
             //TODO::HP‚ª‚È‚­‚È‚Á‚½Žž‚Ìˆ—
             EnemyLazer.DelLaserObj();
