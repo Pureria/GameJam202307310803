@@ -23,7 +23,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private EnemyData enemyData;
 
-    public List<Transform> ShotPosition = new List<Transform>();
+    [SerializeField]
+    public ShotPos shotPosition;
 
     public EnemyData.EnemyShotPattern nowShotPattern { get; private set; }
 
@@ -107,10 +108,10 @@ public class EnemyController : MonoBehaviour
     #endregion
 
     #region Other Function
-    public GameObject InstantiateAmmo(GameObject ammoObj, Quaternion rotation)
+    public GameObject InstantiateAmmo(GameObject ammoObj, Quaternion rotation,Vector3 pos)
     {
         GameObject ret = null;
-        ret = Instantiate(ammoObj, ShotPosition[0].position, rotation);
+        ret = Instantiate(ammoObj, pos, rotation);
         return ret;
     }
 
@@ -129,5 +130,33 @@ public class EnemyController : MonoBehaviour
     }
 
     public bool GetNowInvincible() { return nowInvincible; }
+
+    public Vector3 GetShotPosition(EnemyData.AttackPosition pos)
+    {
+        Vector3 ret = Vector3.zero;
+        switch(pos)
+        {
+            case EnemyData.AttackPosition.PositionTop:
+                ret = shotPosition.ShotPositionTop.position;
+                break;
+            case EnemyData.AttackPosition.PositionLeft:
+                ret = shotPosition.ShotPositionLeft.position;
+                break;
+            case EnemyData.AttackPosition.PositionRight:
+                ret = shotPosition.ShotPositionRight.position;
+                break;
+            default:
+                break;
+        }
+        return ret;
+    }
     #endregion
+}
+
+[System.Serializable]
+public class ShotPos
+{
+    public Transform ShotPositionTop;
+    public Transform ShotPositionLeft;
+    public Transform ShotPositionRight;
 }

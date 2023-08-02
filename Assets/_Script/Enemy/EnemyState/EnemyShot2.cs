@@ -22,22 +22,23 @@ public class EnemyShot2 : EnemyState
         base.LogicUpdate();
         GameObject shot;
         int attackCount = enemy.IdleState.attackCount;
+        Vector3 InstPosition = enemy.GetShotPosition(enemy.nowShotPattern.attackType[attackCount].position);
 
-        workspace = GameManager.Instance.Player.transform.position - enemy.ShotPosition[0].position;
+        workspace = GameManager.Instance.Player.transform.position - InstPosition;
         workspace.x = workspace.x + enemyData.EnemyShot2AddX;
-        shot = enemy.InstantiateAmmo(enemyData.shotIntel[0].shotObject, Quaternion.identity);
+        shot = enemy.InstantiateAmmo(enemyData.shotIntel[0].shotObject, Quaternion.identity, InstPosition);
         shot.GetComponent<EnemyShotMove>().SetDirection(workspace.normalized, enemyData.shotIntel[0].speed);
 
         for (int i = 1; i <= enemyData.EnemyShot2Count; i++)
         {
-            workspace = (GameManager.Instance.Player.transform.position - enemy.ShotPosition[0].position);
+            workspace = (GameManager.Instance.Player.transform.position - InstPosition);
             workspace.x = workspace.x + (1.5f * i) + enemyData.EnemyShot2AddX;
-            shot = enemy.InstantiateAmmo(enemyData.shotIntel[0].shotObject, Quaternion.identity);
+            shot = enemy.InstantiateAmmo(enemyData.shotIntel[0].shotObject, Quaternion.identity, InstPosition);
             shot.GetComponent<EnemyShotMove>().SetDirection(workspace.normalized, enemyData.shotIntel[0].speed);
 
-            workspace = (GameManager.Instance.Player.transform.position - enemy.ShotPosition[0].position);
+            workspace = (GameManager.Instance.Player.transform.position - InstPosition);
             workspace.x = workspace.x - (1.5f * i) + enemyData.EnemyShot2AddX;
-            shot = enemy.InstantiateAmmo(enemyData.shotIntel[0].shotObject, Quaternion.identity);
+            shot = enemy.InstantiateAmmo(enemyData.shotIntel[0].shotObject, Quaternion.identity, InstPosition);
             shot.GetComponent<EnemyShotMove>().SetDirection(workspace.normalized, enemyData.shotIntel[0].speed);
         }
 

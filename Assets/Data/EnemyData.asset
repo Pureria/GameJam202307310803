@@ -39,34 +39,11 @@ MonoBehaviour:
       position: 0
       nextStateInterval: 0.3
     - type: 0
-      position: 0
+      position: 1
       nextStateInterval: 0.3
     - type: 1
-      position: 0
+      position: 2
       nextStateInterval: 0.3
     - type: 0
       position: 0
       nextStateInterval: 5
-  - attackType:
-    - type: 0
-      position: 0
-      nextStateInterval: 1
-    - type: 0
-      position: 0
-      nextStateInterval: 1
-    - type: 0
-      position: 0
-      nextStateInterval: 1
-    - type: 0
-      position: 0
-      nextStateInterval: 1
-    - type: 1
-      position: 0
-      nextStateInterval: 5
-  - attackType:
-    - type: 0
-      position: 0
-      nextStateInterval: 0.3
-    - type: 0
-      position: 0
-      nextStateInterval: 0.5
