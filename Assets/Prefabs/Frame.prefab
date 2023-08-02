@@ -129,3 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1052b3d94ca024e4691b1564a00784a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChangeScaleTime: 0.7
+  isDebugChangeScale: 0
+  debugChangeScale: {x: 14, y: 6, z: 0}

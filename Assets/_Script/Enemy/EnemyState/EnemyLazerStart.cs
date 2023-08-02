@@ -10,6 +10,8 @@ public class EnemyLazerStart : EnemyLazer
     public override void Enter()
     {
         base.Enter();
+
+        FramePosition.Instance.ChangeScale(enemyData.EnemyFrameScale.x, enemyData.EnemyFrameScale.y);
     }
 
     public override void Exit()
@@ -20,6 +22,22 @@ public class EnemyLazerStart : EnemyLazer
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+        int attackCount = enemy.IdleState.attackCount;
+
+        if(FramePosition.Instance.isChangedScale)
+        {
+            GameObject lazer;
+            Debug.Log("ÉtÉåÅ[ÉÄägëÂèIóπ");
+            Vector3 InitPosition = enemy.GetShotPosition(enemy.nowShotPattern.attackType[attackCount].position);
+            lazer = enemy.InstantiateAmmo(enemyData.enemyShotPrefabs.Laser1, Quaternion.identity, InitPosition);
+            lazer.transform.rotation = enemyData.enemyShotPrefabs.Laser1.transform.rotation;
+            lazerObj.Add(lazer);
+            
+
+            enemy.IdleState.SetLockTime(enemy.nowShotPattern.attackType[attackCount].nextStateInterval);
+            enemy.IdleState.AddAtackCount();
+            stateMachine.ChangeState(enemy.IdleState);
+        }
     }
 
     public override void PhycsUpdate()

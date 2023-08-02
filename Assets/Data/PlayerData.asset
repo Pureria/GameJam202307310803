@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a2aedcd1a796f343b84db2d60de1748, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  PlayerMoveSpeed: 0.1
+  PlayerMoveSpeed: 0.15
   DeadZone: 0.2
   SpawnPosition: {x: 0, y: -3.34}
+  RespawnTime: 1.5
+  InvincibleTime: 1.5
+  AttackDamage: 5

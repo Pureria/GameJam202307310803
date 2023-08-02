@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -10,6 +11,11 @@ public class EnemyController : MonoBehaviour
     public EnemyIdle IdleState { get; private set; }
     public EnemyShot1 Shot1State { get; private set; }
     public EnemyShot2 Shot2State { get; private set; }
+    public EnemyLazerStart LazerShotState { get; private set; }
+    public EnemyLazerStop LazerShotStopState { get; private set; }
+    public EnemyZoomFrame ZoomFrameState { get; private set; }
+    public EnemyRemoveFrame RemoveFrameState { get; private set; }
+    public EnemyOneLaser OneLaserState { get; private set; }
     #endregion
 
     #region Unity Variables
@@ -24,7 +30,7 @@ public class EnemyController : MonoBehaviour
     private EnemyData enemyData;
 
     [SerializeField]
-    public ShotPos shotPosition;
+    private ShotPos shotPosition;
 
     public EnemyData.EnemyShotPattern nowShotPattern { get; private set; }
 
@@ -46,6 +52,11 @@ public class EnemyController : MonoBehaviour
         IdleState = new EnemyIdle(this, stateMachine, enemyData, "idle");
         Shot1State = new EnemyShot1(this, stateMachine, enemyData, "idle");
         Shot2State = new EnemyShot2(this, stateMachine, enemyData, "idle");
+        LazerShotState = new EnemyLazerStart(this, stateMachine, enemyData, "idle");
+        LazerShotStopState = new EnemyLazerStop(this, stateMachine, enemyData, "idle");
+        ZoomFrameState = new EnemyZoomFrame(this, stateMachine, enemyData, "idle");
+        RemoveFrameState = new EnemyRemoveFrame(this, stateMachine, enemyData, "idle");
+        OneLaserState = new EnemyOneLaser(this, stateMachine, enemyData, "idle");
 
         nowShotPattern = enemyData.shotPattern[0];
         IdleState.SetLockTime(enemyData.EnemyShotInterval);
@@ -71,8 +82,8 @@ public class EnemyController : MonoBehaviour
             DebugShot = false;
 
             workspace = GameManager.Instance.Player.transform.position - this.transform.position;
-            GameObject shot = Instantiate(enemyData.shotIntel[0].shotObject, transform.position, Quaternion.identity);
-            shot.GetComponent<EnemyShotMove>().SetDirection(workspace.normalized, enemyData.shotIntel[0].speed);
+            GameObject shot = Instantiate(enemyData.enemyShotPrefabs.Shot1, transform.position, Quaternion.identity);
+            shot.GetComponent<EnemyShotMove>().SetDirection(workspace.normalized, enemyData.enemyShotPrefabs.shot1Speed);
         }
 
         if(Damage.isDamage)
@@ -117,6 +128,7 @@ public class EnemyController : MonoBehaviour
 
     public void CheckAttackPattern()
     {
+        /*
         int cnt = enemyData.shotPattern.Count - 1;
         float current = enemyData.EnemyHP / cnt;
         int num = (int)(Status.GetNowHP() / current);
@@ -127,6 +139,25 @@ public class EnemyController : MonoBehaviour
         {
             Debug.Log("パターン変更");
         }
+        */
+
+        EnemyData.EnemyShotPattern old = nowShotPattern;
+
+        int cnt = enemyData.shotPattern.Count;
+        float current = enemyData.EnemyHP / cnt;
+        float nowHP = Status.GetNowHP();
+        int dis = 0;
+        for(int i = cnt - 1;i >= 0;i--)
+        {
+            if(nowHP > current * i)
+            {
+                nowShotPattern= enemyData.shotPattern[cnt - i - 1];
+                break;
+            }
+
+            dis = cnt - i - 1;            
+        }
+        if (old != nowShotPattern) Debug.Log("パターン変更 : " + dis);
     }
 
     public bool GetNowInvincible() { return nowInvincible; }
