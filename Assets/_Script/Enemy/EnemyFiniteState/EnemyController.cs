@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour
     public EnemyZoomFrame ZoomFrameState { get; private set; }
     public EnemyRemoveFrame RemoveFrameState { get; private set; }
     public EnemyOneLaser OneLaserState { get; private set; }
+    public EnemyPlayerSearchShot PlayerSearchShotState { get; private set; }
     #endregion
 
     #region Unity Variables
@@ -57,6 +58,7 @@ public class EnemyController : MonoBehaviour
         ZoomFrameState = new EnemyZoomFrame(this, stateMachine, enemyData, "idle");
         RemoveFrameState = new EnemyRemoveFrame(this, stateMachine, enemyData, "idle");
         OneLaserState = new EnemyOneLaser(this, stateMachine, enemyData, "idle");
+        PlayerSearchShotState = new EnemyPlayerSearchShot(this, stateMachine, enemyData, "idle");
 
         nowShotPattern = enemyData.shotPattern[0];
         IdleState.SetLockTime(enemyData.EnemyShotInterval);

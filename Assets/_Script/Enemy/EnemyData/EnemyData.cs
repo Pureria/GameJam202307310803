@@ -56,6 +56,8 @@ public class EnemyData : ScriptableObject
 
         public GameObject Laser1;
         public GameObject Laser2;
+
+        public GameObject SearchShot;
     }
 
     public enum AttackType
@@ -67,6 +69,7 @@ public class EnemyData : ScriptableObject
         OneShotLaser,
         ZoomFrame,
         RemoveFrame,
+        PlayerSearchShot,
         AttackCount
     }
 
