@@ -71,11 +71,11 @@ public class EnemyIdle : EnemyState
                 stateMachine.ChangeState(enemy.Shot2State);
                 break;
 
-            case EnemyData.AttackType.LazerStart:
+            case EnemyData.AttackType.LaserStart:
                 stateMachine.ChangeState(enemy.LazerShotState);
                     break;
 
-            case EnemyData.AttackType.LazerStop:
+            case EnemyData.AttackType.LaserStop:
                 stateMachine.ChangeState(enemy.LazerShotStopState);
                 break;
 
@@ -85,6 +85,10 @@ public class EnemyIdle : EnemyState
 
             case EnemyData.AttackType.RemoveFrame:
                 stateMachine.ChangeState(enemy.RemoveFrameState);
+                break;
+
+            case EnemyData.AttackType.OneShotLaser:
+                stateMachine.ChangeState(enemy.OneLaserState);
                 break;
 
             default:

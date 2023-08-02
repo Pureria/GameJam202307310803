@@ -26,8 +26,6 @@ public class EnemyLazerStart : EnemyLazer
 
         if(FramePosition.Instance.isChangedScale)
         {
-            //TODO::レーザー発射処理
-            //仮処理
             GameObject lazer;
             Debug.Log("フレーム拡大終了");
             Vector3 InitPosition = enemy.GetShotPosition(enemy.nowShotPattern.attackType[attackCount].position);

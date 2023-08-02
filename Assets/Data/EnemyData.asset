@@ -14,17 +14,61 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyHP: 100
   EnemyInvincibleTime: 0.5
-  EnemyShotInterval: 0.7
-  shotIntel:
-  - shotObject: {fileID: 6686325461754489819, guid: 3c1968457e9cce241ae25905591ddc09, type: 3}
-    speed: 0.1
-  - shotObject: {fileID: 8080756347745273020, guid: 7864bfb5ccd5a3242a6f918c25c1b0a7, type: 3}
-    speed: 0
+  EnemyShotInterval: 3
+  enemyShotPrefabs:
+    Shot1: {fileID: 6686325461754489819, guid: 3c1968457e9cce241ae25905591ddc09, type: 3}
+    shot1Speed: 0.2
+    Laser1: {fileID: 8080756347745273020, guid: 7864bfb5ccd5a3242a6f918c25c1b0a7, type: 3}
+    Laser2: {fileID: 1897306395860015019, guid: 9cff47b12c2aa29449a8dc84dfe2e49f, type: 3}
   EnemyShot1Count: 10
   EnemyShot2Count: 10
   EnemyShot2AddX: 0.8
   EnemyFrameScale: {x: 14, y: 6, z: 0}
   shotPattern:
+  - attackType:
+    - type: 4
+      position: 0
+      nextStateInterval: 0.3
+    - type: 4
+      position: 1
+      nextStateInterval: 0.3
+    - type: 4
+      position: 2
+      nextStateInterval: 3
+  - attackType:
+    - type: 5
+      position: 0
+      nextStateInterval: 2
+    - type: 4
+      position: 0
+      nextStateInterval: 0.2
+    - type: 4
+      position: 0
+      nextStateInterval: 0.2
+    - type: 4
+      position: 0
+      nextStateInterval: 1
+    - type: 4
+      position: 1
+      nextStateInterval: 0.2
+    - type: 4
+      position: 1
+      nextStateInterval: 0.2
+    - type: 4
+      position: 1
+      nextStateInterval: 1
+    - type: 4
+      position: 2
+      nextStateInterval: 0.2
+    - type: 4
+      position: 2
+      nextStateInterval: 0.2
+    - type: 4
+      position: 2
+      nextStateInterval: 3
+    - type: 6
+      position: 0
+      nextStateInterval: 5
   - attackType:
     - type: 0
       position: 0
@@ -45,6 +89,9 @@ MonoBehaviour:
       position: 0
       nextStateInterval: 5
   - attackType:
+    - type: 5
+      position: 0
+      nextStateInterval: 0.5
     - type: 0
       position: 0
       nextStateInterval: 0.5
@@ -53,7 +100,10 @@ MonoBehaviour:
       nextStateInterval: 0.5
     - type: 0
       position: 2
-      nextStateInterval: 2
+      nextStateInterval: 0.5
+    - type: 6
+      position: 2
+      nextStateInterval: 5
   - attackType:
     - type: 0
       position: 0

@@ -55,14 +55,16 @@ public class EnemyData : ScriptableObject
         public float shot1Speed;
 
         public GameObject Laser1;
+        public GameObject Laser2;
     }
 
     public enum AttackType
     {
         Attack1,
         Attack2,
-        LazerStart,
-        LazerStop,
+        LaserStart,
+        LaserStop,
+        OneShotLaser,
         ZoomFrame,
         RemoveFrame,
         AttackCount
