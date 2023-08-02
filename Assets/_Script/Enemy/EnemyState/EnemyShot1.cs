@@ -27,20 +27,20 @@ public class EnemyShot1 : EnemyState
         Vector3 InstPosition = enemy.GetShotPosition(enemy.nowShotPattern.attackType[attackCount].position);
 
         workspace = GameManager.Instance.Player.transform.position - InstPosition;
-        shot = enemy.InstantiateAmmo(enemyData.shotIntel[0].shotObject, Quaternion.identity, InstPosition);
-        shot.GetComponent<EnemyShotMove>().SetDirection(workspace.normalized, enemyData.shotIntel[0].speed);
+        shot = enemy.InstantiateAmmo(enemyData.enemyShotPrefabs.Shot1, Quaternion.identity, InstPosition);
+        shot.GetComponent<EnemyShotMove>().SetDirection(workspace.normalized, enemyData.enemyShotPrefabs.shot1Speed);
 
         for(int i = 1; i <= enemyData.EnemyShot1Count; i++)
         {
             workspace = (GameManager.Instance.Player.transform.position - InstPosition);
             workspace.x = workspace.x + (1.5f * i);
-            shot = enemy.InstantiateAmmo(enemyData.shotIntel[0].shotObject, Quaternion.identity, InstPosition);
-            shot.GetComponent<EnemyShotMove>().SetDirection(workspace.normalized, enemyData.shotIntel[0].speed);
+            shot = enemy.InstantiateAmmo(enemyData.enemyShotPrefabs.Shot1, Quaternion.identity, InstPosition);
+            shot.GetComponent<EnemyShotMove>().SetDirection(workspace.normalized, enemyData.enemyShotPrefabs.shot1Speed);
 
             workspace = (GameManager.Instance.Player.transform.position - InstPosition);
             workspace.x = workspace.x - (1.5f * i);
-            shot = enemy.InstantiateAmmo(enemyData.shotIntel[0].shotObject, Quaternion.identity, InstPosition);
-            shot.GetComponent<EnemyShotMove>().SetDirection(workspace.normalized, enemyData.shotIntel[0].speed);
+            shot = enemy.InstantiateAmmo(enemyData.enemyShotPrefabs.Shot1, Quaternion.identity, InstPosition);
+            shot.GetComponent<EnemyShotMove>().SetDirection(workspace.normalized, enemyData.enemyShotPrefabs.shot1Speed);
         }
 
         enemy.IdleState.SetLockTime(enemy.nowShotPattern.attackType[attackCount].nextStateInterval);

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyLazerStart : EnemyLazer
+public class EnemyZoomFrame : EnemyState
 {
-    public EnemyLazerStart(EnemyController enemy, EnemyStateMachine stateMachine, EnemyData enemyData, string animBoolName) : base(enemy, stateMachine, enemyData, animBoolName)
+    public EnemyZoomFrame(EnemyController enemy, EnemyStateMachine stateMachine, EnemyData enemyData, string animBoolName) : base(enemy, stateMachine, enemyData, animBoolName)
     { }
 
     public override void Enter()
@@ -24,16 +24,8 @@ public class EnemyLazerStart : EnemyLazer
         base.LogicUpdate();
         int attackCount = enemy.IdleState.attackCount;
 
-        if(FramePosition.Instance.isChangedScale)
+        if (FramePosition.Instance.isChangedScale)
         {
-            GameObject lazer;
-            Debug.Log("ÉtÉåÅ[ÉÄägëÂèIóπ");
-            Vector3 InitPosition = enemy.GetShotPosition(enemy.nowShotPattern.attackType[attackCount].position);
-            lazer = enemy.InstantiateAmmo(enemyData.enemyShotPrefabs.Laser1, Quaternion.identity, InitPosition);
-            lazer.transform.rotation = enemyData.enemyShotPrefabs.Laser1.transform.rotation;
-            lazerObj.Add(lazer);
-            
-
             enemy.IdleState.SetLockTime(enemy.nowShotPattern.attackType[attackCount].nextStateInterval);
             enemy.IdleState.AddAtackCount();
             stateMachine.ChangeState(enemy.IdleState);

@@ -50,6 +50,9 @@ TagManager:
   - name: EnemyShot
     uniqueID: 287339317
     locked: 0
+  - name: EnemyHeart
+    uniqueID: 732498515
+    locked: 0
   - name: Player
     uniqueID: 3631335857
     locked: 0

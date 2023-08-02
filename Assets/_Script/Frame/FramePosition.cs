@@ -83,6 +83,9 @@ public class FramePosition : MonoBehaviour
 
     public void ChangeScale(float xScale,float yScale)
     {
+        if (transform.localScale == new Vector3(xScale, yScale, transform.localScale.z))
+            return;
+
         nowChangeScaleTime = 0.0f;
         isChangedScale = false;
         reChangeScale = transform.localScale;
@@ -91,6 +94,9 @@ public class FramePosition : MonoBehaviour
 
     public void ResetScale()
     {
+        if (transform.localScale == defScale)
+            return;
+
         nowChangeScaleTime = 0.0f;
         isChangedScale = false;
         reChangeScale = transform.localScale;
