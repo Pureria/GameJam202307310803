@@ -63,6 +63,8 @@ public class EnemyData : ScriptableObject
         Attack2,
         LazerStart,
         LazerStop,
+        ZoomFrame,
+        RemoveFrame,
         AttackCount
     }
 

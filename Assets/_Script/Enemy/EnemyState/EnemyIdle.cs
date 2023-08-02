@@ -79,6 +79,14 @@ public class EnemyIdle : EnemyState
                 stateMachine.ChangeState(enemy.LazerShotStopState);
                 break;
 
+            case EnemyData.AttackType.ZoomFrame:
+                stateMachine.ChangeState(enemy.ZoomFrameState);
+                break;
+
+            case EnemyData.AttackType.RemoveFrame:
+                stateMachine.ChangeState(enemy.RemoveFrameState);
+                break;
+
             default:
                 break;
         }

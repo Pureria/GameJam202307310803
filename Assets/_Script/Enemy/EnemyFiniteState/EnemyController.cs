@@ -12,6 +12,8 @@ public class EnemyController : MonoBehaviour
     public EnemyShot2 Shot2State { get; private set; }
     public EnemyLazerStart LazerShotState { get; private set; }
     public EnemyLazerStop LazerShotStopState { get; private set; }
+    public EnemyZoomFrame ZoomFrameState { get; private set; }
+    public EnemyRemoveFrame RemoveFrameState { get; private set; }
     #endregion
 
     #region Unity Variables
@@ -50,6 +52,8 @@ public class EnemyController : MonoBehaviour
         Shot2State = new EnemyShot2(this, stateMachine, enemyData, "idle");
         LazerShotState = new EnemyLazerStart(this, stateMachine, enemyData, "idle");
         LazerShotStopState = new EnemyLazerStop(this, stateMachine, enemyData, "idle");
+        ZoomFrameState = new EnemyZoomFrame(this, stateMachine, enemyData, "idle");
+        RemoveFrameState = new EnemyRemoveFrame(this, stateMachine, enemyData, "idle");
 
         nowShotPattern = enemyData.shotPattern[0];
         IdleState.SetLockTime(enemyData.EnemyShotInterval);
