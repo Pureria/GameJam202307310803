@@ -19,11 +19,13 @@ public class EnemyController : MonoBehaviour
     public EnemyOneLaser OneLaserState { get; private set; }
     public EnemyPlayerSearchShot PlayerSearchShotState { get; private set; }
     public EnemyDead DeadState { get; private set; }
+    public EnemyEntry EntryState { get; private set; }
     #endregion
 
     #region Unity Variables
     public Animator _anim { get; private set; }
-    public UnityEvent deadEvent = new UnityEvent();
+    public UnityEvent EntryEvent = new UnityEvent();
+    public UnityEvent DeadEvent = new UnityEvent();
     #endregion
 
     #region Variables
@@ -60,6 +62,7 @@ public class EnemyController : MonoBehaviour
         OneLaserState = new EnemyOneLaser(this, stateMachine, enemyData, "idle");
         PlayerSearchShotState = new EnemyPlayerSearchShot(this, stateMachine, enemyData, "idle");
         DeadState = new EnemyDead(this, stateMachine, enemyData, "dead");
+        EntryState = new EnemyEntry(this, stateMachine, enemyData, "entry");
 
         nowShotPattern = enemyData.shotPattern[0];
         IdleState.SetLockTime(enemyData.EnemyShotInterval);
@@ -75,7 +78,7 @@ public class EnemyController : MonoBehaviour
 
         Status?.Initialize(enemyData.EnemyHP);
         uiController.Initialize(enemyData.EnemyHP);
-        stateMachine.Initialize(IdleState);
+        stateMachine.Initialize(EntryState);
     }
 
     private void Update()
