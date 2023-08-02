@@ -115,6 +115,8 @@ public class EnemyController : MonoBehaviour
         if(nowHp <= 0)
         {
             //TODO::HP‚ª‚È‚­‚È‚Á‚½Žž‚Ìˆ—
+            EnemyLazer.DelLaserObj();
+            FramePosition.Instance.ResetScale();
             stateMachine.ChangeState(DeadState);
         }
 

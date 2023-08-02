@@ -53,11 +53,15 @@ public class Crystal : MonoBehaviour
 
         PlayerController pc = collision.transform.root.GetComponent<PlayerController>();
         Damage eDamage = null;
-        eDamage = GameManager.Instance.Enemy.GetComponentInChildren<Core>().GetCoreComponent(eDamage);
 
-        eDamage?.AddDamage(pc.GetPlayerData().AttackDamage);
-        damageFlashTime = Time.time;
-        damageFlash = true;
-        sprite.enabled = false;
+        if(GameManager.Instance.Enemy != null)
+        {
+            eDamage = GameManager.Instance.Enemy.GetComponentInChildren<Core>().GetCoreComponent(eDamage);
+
+            eDamage?.AddDamage(pc.GetPlayerData().AttackDamage);
+            damageFlashTime = Time.time;
+            damageFlash = true;
+            sprite.enabled = false;
+        }
     }
 }

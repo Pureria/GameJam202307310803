@@ -8,4 +8,12 @@ public class EnemyLazer : EnemyState
 
     public EnemyLazer(EnemyController enemy, EnemyStateMachine stateMachine, EnemyData enemyData, string animBoolName) : base(enemy, stateMachine, enemyData, animBoolName)
     { }
+
+    public static void DelLaserObj()
+    {
+        foreach (GameObject lazer in lazerObj)
+        {
+            GameObject.Destroy(lazer);
+        }
+    }
 }
