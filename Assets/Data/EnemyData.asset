@@ -18,12 +18,32 @@ MonoBehaviour:
   shotIntel:
   - shotObject: {fileID: 6686325461754489819, guid: 3c1968457e9cce241ae25905591ddc09, type: 3}
     speed: 0.1
-  - shotObject: {fileID: 7712941251308885970, guid: e5c5e8c4c568cc241ba0accade99d22c, type: 3}
+  - shotObject: {fileID: 8080756347745273020, guid: 7864bfb5ccd5a3242a6f918c25c1b0a7, type: 3}
     speed: 0
   EnemyShot1Count: 10
   EnemyShot2Count: 10
   EnemyShot2AddX: 0.8
+  EnemyFrameScale: {x: 14, y: 6, z: 0}
   shotPattern:
+  - attackType:
+    - type: 0
+      position: 0
+      nextStateInterval: 5
+    - type: 2
+      position: 0
+      nextStateInterval: 0.3
+    - type: 2
+      position: 1
+      nextStateInterval: 0.3
+    - type: 2
+      position: 2
+      nextStateInterval: 0.3
+    - type: 0
+      position: 0
+      nextStateInterval: 5
+    - type: 3
+      position: 0
+      nextStateInterval: 5
   - attackType:
     - type: 0
       position: 0

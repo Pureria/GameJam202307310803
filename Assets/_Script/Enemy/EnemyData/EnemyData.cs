@@ -27,6 +27,9 @@ public class EnemyData : ScriptableObject
     [Tooltip("Shot2の弾をずらす距離")]
     public float EnemyShot2AddX = 0.8f;
 
+    [Tooltip("レーザー射出時の操作範囲のスケール")]
+    public Vector3 EnemyFrameScale = Vector3.zero;
+
     [Header("Enemy Attack Pattern")]
     public List<EnemyShotPattern> shotPattern = new List<EnemyShotPattern>();
 

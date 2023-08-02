@@ -71,6 +71,14 @@ public class EnemyIdle : EnemyState
                 stateMachine.ChangeState(enemy.Shot2State);
                 break;
 
+            case EnemyData.AttackType.LazerStart:
+                stateMachine.ChangeState(enemy.LazerShotState);
+                    break;
+
+            case EnemyData.AttackType.LazerStop:
+                stateMachine.ChangeState(enemy.LazerShotStopState);
+                break;
+
             default:
                 break;
         }

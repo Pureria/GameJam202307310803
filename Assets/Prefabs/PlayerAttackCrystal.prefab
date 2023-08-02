@@ -46,8 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb881618fff54c4aae6a6be7dcf60ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalSpeed: 0.02
-  moveDeadZone: 0.2
+  crystalData: {fileID: 11400000, guid: 0814cde820eb0604d8a1f23c234c0826, type: 2}
 --- !u!1 &8277036787186110990
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,7 +61,7 @@ GameObject:
   - component: {fileID: 8277036787186110985}
   - component: {fileID: 8277036787186110984}
   m_Layer: 0
-  m_Name: Square
+  m_Name: CrystalImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -839,10 +839,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerAttackCrystal
       objectReference: {fileID: 0}
-    - target: {fileID: 8277036787151059193, guid: 07d55049c4b8bb64d991fe71805c22ac, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8277036787151059194, guid: 07d55049c4b8bb64d991fe71805c22ac, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -886,14 +882,6 @@ PrefabInstance:
     - target: {fileID: 8277036787151059194, guid: 07d55049c4b8bb64d991fe71805c22ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8277036787151059195, guid: 07d55049c4b8bb64d991fe71805c22ac, type: 3}
-      propertyPath: crystalData
-      value: 
-      objectReference: {fileID: 11400000, guid: 0814cde820eb0604d8a1f23c234c0826, type: 2}
-    - target: {fileID: 8277036787186110990, guid: 07d55049c4b8bb64d991fe71805c22ac, type: 3}
-      propertyPath: m_Name
-      value: CrystalImage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07d55049c4b8bb64d991fe71805c22ac, type: 3}
