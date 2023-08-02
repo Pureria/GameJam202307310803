@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -127,6 +128,7 @@ public class EnemyController : MonoBehaviour
 
     public void CheckAttackPattern()
     {
+        /*
         int cnt = enemyData.shotPattern.Count - 1;
         float current = enemyData.EnemyHP / cnt;
         int num = (int)(Status.GetNowHP() / current);
@@ -137,6 +139,25 @@ public class EnemyController : MonoBehaviour
         {
             Debug.Log("パターン変更");
         }
+        */
+
+        EnemyData.EnemyShotPattern old = nowShotPattern;
+
+        int cnt = enemyData.shotPattern.Count;
+        float current = enemyData.EnemyHP / cnt;
+        float nowHP = Status.GetNowHP();
+        int dis = 0;
+        for(int i = cnt - 1;i >= 0;i--)
+        {
+            if(nowHP > current * i)
+            {
+                nowShotPattern= enemyData.shotPattern[cnt - i - 1];
+                break;
+            }
+
+            dis = cnt - i - 1;            
+        }
+        if (old != nowShotPattern) Debug.Log("パターン変更 : " + dis);
     }
 
     public bool GetNowInvincible() { return nowInvincible; }

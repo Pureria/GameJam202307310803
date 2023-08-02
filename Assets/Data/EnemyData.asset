@@ -17,11 +17,11 @@ MonoBehaviour:
   EnemyShotInterval: 3
   enemyShotPrefabs:
     Shot1: {fileID: 6686325461754489819, guid: 3c1968457e9cce241ae25905591ddc09, type: 3}
-    shot1Speed: 0.2
+    shot1Speed: 0.1
     Laser1: {fileID: 8080756347745273020, guid: 7864bfb5ccd5a3242a6f918c25c1b0a7, type: 3}
     Laser2: {fileID: 1897306395860015019, guid: 9cff47b12c2aa29449a8dc84dfe2e49f, type: 3}
-  EnemyShot1Count: 10
-  EnemyShot2Count: 10
+  EnemyShot1Count: 8
+  EnemyShot2Count: 8
   EnemyShot2AddX: 0.8
   EnemyFrameScale: {x: 14, y: 6, z: 0}
   shotPattern:

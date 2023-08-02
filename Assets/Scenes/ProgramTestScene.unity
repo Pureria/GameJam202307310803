@@ -130,14 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1434460034, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1434460034, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3539470972643504424, guid: 23f8e45246fd497408d647246c335209, type: 3}
       propertyPath: m_Name
       value: Boss
@@ -184,14 +176,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3539470972643504427, guid: 23f8e45246fd497408d647246c335209, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6883600730037155138, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6883600730037155138, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -709,6 +693,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerAttackCrystal
       objectReference: {fileID: 0}
+    - target: {fileID: 8277036787151059193, guid: 07d55049c4b8bb64d991fe71805c22ac, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8277036787151059194, guid: 07d55049c4b8bb64d991fe71805c22ac, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -819,22 +807,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5339987200690232640, guid: e80d6cd6491be27418f075b5608017c9, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5339987201322476416, guid: e80d6cd6491be27418f075b5608017c9, type: 3}
-      propertyPath: ChangeScaleTime
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5339987201322476416, guid: e80d6cd6491be27418f075b5608017c9, type: 3}
-      propertyPath: debugChangeScale.x
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 5339987201322476416, guid: e80d6cd6491be27418f075b5608017c9, type: 3}
-      propertyPath: debugChangeScale.y
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 5339987201322476430, guid: e80d6cd6491be27418f075b5608017c9, type: 3}
       propertyPath: m_Name
       value: Frame
