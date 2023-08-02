@@ -15,7 +15,6 @@ namespace GJ.UI
         [Header("ゲーム開始時の状態")]
         [SerializeField] private State initialState;
 
-
         private void Start()
         {
             switch (this.initialState)
