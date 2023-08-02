@@ -75,8 +75,8 @@ public class EnemyController : MonoBehaviour
             DebugShot = false;
 
             workspace = GameManager.Instance.Player.transform.position - this.transform.position;
-            GameObject shot = Instantiate(enemyData.shotIntel[0].shotObject, transform.position, Quaternion.identity);
-            shot.GetComponent<EnemyShotMove>().SetDirection(workspace.normalized, enemyData.shotIntel[0].speed);
+            GameObject shot = Instantiate(enemyData.enemyShotPrefabs.Shot1, transform.position, Quaternion.identity);
+            shot.GetComponent<EnemyShotMove>().SetDirection(workspace.normalized, enemyData.enemyShotPrefabs.shot1Speed);
         }
 
         if(Damage.isDamage)
