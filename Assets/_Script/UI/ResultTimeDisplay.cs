@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
 
@@ -8,12 +6,12 @@ namespace GJ.UI
 {
     public class ResultTimeDisplay : MonoBehaviour
     {
-        [Header("ƒ‰ƒxƒ‹‚Ìİ’è")]
+        [Header("ãƒ©ãƒ™ãƒ«ã®è¨­å®š")]
         [SerializeField] private Text label;
         [SerializeField] private string labelText;
 
         [Space]
-        [Header("ƒ^ƒCƒ€•\¦‚Ìİ’è")]
+        [Header("ã‚¿ã‚¤ãƒ è¡¨ç¤ºã®è¨­å®š")]
         [SerializeField] private Text value;
         [SerializeField] private string formatString;
 
@@ -35,7 +33,7 @@ namespace GJ.UI
         {
             this.label.text = labelText;
 
-            // ƒfƒoƒbƒO—p‚É‰Šú’l‚Æ‚µ‚Ä“K“–‚È¬”‚ğ“ü‚ê‚Ä‚Ü‚·.
+            // ãƒ‡ãƒãƒƒã‚°ç”¨ã«åˆæœŸå€¤ã¨ã—ã¦é©å½“ãªå°æ•°ã‚’å…¥ã‚Œã¦ã¾ã™.
             this.Time = Mathf.PI;
         }
     }

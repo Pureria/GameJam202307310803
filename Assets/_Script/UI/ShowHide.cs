@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+ï»¿using UnityEngine;
 
 
 namespace GJ.UI
@@ -9,17 +7,17 @@ namespace GJ.UI
     {
         private enum State
         {
-            [InspectorName("•\¦")] Show,
-            [InspectorName("”ñ•\¦")] Hide
+            [InspectorName("è¡¨ç¤º")] Show,
+            [InspectorName("éè¡¨ç¤º")] Hide
         }
 
 
-        [Header("ƒQ[ƒ€ŠJn‚Ìó‘Ô")]
+        [Header("ã‚²ãƒ¼ãƒ é–‹å§‹æ™‚ã®çŠ¶æ…‹")]
         [SerializeField] private State initialState;
 
 
-		private void Start()
-		{
+        private void Start()
+        {
             switch (this.initialState)
             {
                 case State.Show:
@@ -30,7 +28,7 @@ namespace GJ.UI
                     this.gameObject.SetActive(false);
                     break;
             }
-		}
+        }
 
 
         public void Show()
@@ -43,5 +41,5 @@ namespace GJ.UI
         {
             this.gameObject.SetActive(false);
         }
-	}
+    }
 }
