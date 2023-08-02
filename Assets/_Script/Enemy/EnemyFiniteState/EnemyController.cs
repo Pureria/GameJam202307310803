@@ -28,9 +28,6 @@ public class EnemyController : MonoBehaviour
 
     #region Variables
     [SerializeField]
-    private bool DebugShot = false;
-
-    [SerializeField]
     private EnemyData enemyData;
 
     [SerializeField]
@@ -83,15 +80,6 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if(DebugShot)
-        {
-            DebugShot = false;
-
-            workspace = GameManager.Instance.Player.transform.position - this.transform.position;
-            GameObject shot = Instantiate(enemyData.enemyShotPrefabs.Shot1, transform.position, Quaternion.identity);
-            shot.GetComponent<EnemyShotMove>().SetDirection(workspace.normalized, enemyData.enemyShotPrefabs.shot1Speed);
-        }
-
         if(Damage.isDamage)
         {
             Damage?.UseDamageFlg();
@@ -114,7 +102,6 @@ public class EnemyController : MonoBehaviour
         float nowHp = Status.GetNowHP();
         if(nowHp <= 0 && stateMachine.currentState != DeadState)
         {
-            //TODO::HP‚ª‚È‚­‚È‚Á‚½Žž‚Ìˆ—
             EnemyLazer.DelLaserObj();
             FramePosition.Instance.ResetScale();
             stateMachine.ChangeState(DeadState);
