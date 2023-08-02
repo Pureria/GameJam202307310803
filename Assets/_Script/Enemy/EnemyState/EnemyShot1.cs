@@ -23,24 +23,26 @@ public class EnemyShot1 : EnemyState
         base.LogicUpdate();
         GameObject shot;
 
-        workspace = GameManager.Instance.Player.transform.position - enemy.ShotPosition.position;
+        int attackCount = enemy.IdleState.attackCount;
+
+        workspace = GameManager.Instance.Player.transform.position - enemy.ShotPosition[0].position;
         shot = enemy.InstantiateAmmo(enemyData.shotIntel[0].shotObject, Quaternion.identity);
         shot.GetComponent<EnemyShotMove>().SetDirection(workspace.normalized, enemyData.shotIntel[0].speed);
 
         for(int i = 1; i <= enemyData.EnemyShot1Count; i++)
         {
-            workspace = (GameManager.Instance.Player.transform.position - enemy.ShotPosition.position);
+            workspace = (GameManager.Instance.Player.transform.position - enemy.ShotPosition[0].position);
             workspace.x = workspace.x + (1.5f * i);
             shot = enemy.InstantiateAmmo(enemyData.shotIntel[0].shotObject, Quaternion.identity);
             shot.GetComponent<EnemyShotMove>().SetDirection(workspace.normalized, enemyData.shotIntel[0].speed);
 
-            workspace = (GameManager.Instance.Player.transform.position - enemy.ShotPosition.position);
+            workspace = (GameManager.Instance.Player.transform.position - enemy.ShotPosition[0].position);
             workspace.x = workspace.x - (1.5f * i);
             shot = enemy.InstantiateAmmo(enemyData.shotIntel[0].shotObject, Quaternion.identity);
             shot.GetComponent<EnemyShotMove>().SetDirection(workspace.normalized, enemyData.shotIntel[0].speed);
         }
 
-        enemy.IdleState.SetLockTime(enemy.nowShotPattern.attackType[enemy.IdleState.attackCount].nextStateInterval);
+        enemy.IdleState.SetLockTime(enemy.nowShotPattern.attackType[attackCount].nextStateInterval);
         enemy.IdleState.AddAtackCount();
         stateMachine.ChangeState(enemy.IdleState);
     }

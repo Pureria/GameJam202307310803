@@ -47,6 +47,7 @@ public class EnemyData : ScriptableObject
     public class EnemyShotModel
     {
         public AttackType type;
+        public AttackPosition position;
         public float nextStateInterval = 1.0f;
     }
 
@@ -57,5 +58,13 @@ public class EnemyData : ScriptableObject
         LazerStart,
         LazerStop,
         AttackCount
+    }
+
+    public enum AttackPosition
+    {
+        PositionTop,
+        PositionLeft,
+        PositionRight,
+        PositionCount
     }
 }

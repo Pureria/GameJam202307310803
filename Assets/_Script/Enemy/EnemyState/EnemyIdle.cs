@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class EnemyIdle : EnemyState
 {
+    public int attackCount { get; protected set; }
     private float lockTime;
     private bool idleLock;
     private bool isSetNextState;
     private EnemyState nextState;
 
-    public int attackCount { get; private set; }
     public EnemyIdle(EnemyController enemy,EnemyStateMachine stateMachine,EnemyData enemyData,string animBoolName):base(enemy,stateMachine,enemyData,animBoolName)
     {
         isSetNextState = false;
         attackCount = 0;
+        nextState = this;
     }
 
     public override void Enter()
@@ -48,10 +49,16 @@ public class EnemyIdle : EnemyState
             stateMachine.ChangeState(enemy.Shot1State);
         */
 
+        if (this.isSetNextState)
+        {
+            this.isSetNextState = false;
+            stateMachine.ChangeState(this.nextState);
+        }
+
         if (attackCount >= enemy.nowShotPattern.attackType.Count)
         {
-            attackCount = 0;
             enemy.CheckAttackPattern();
+            attackCount = 0;
         }
         EnemyData.AttackType nextState = enemy.nowShotPattern.attackType[attackCount].type;
         switch(nextState)
@@ -87,9 +94,12 @@ public class EnemyIdle : EnemyState
 
     public void SetNextState(EnemyState nextState)
     {
-        isSetNextState = true;
+        this.isSetNextState = true;
         this.nextState = nextState;
     }
 
-    public void AddAtackCount() => attackCount++;
+    public void AddAtackCount()
+    {
+        attackCount += 1;
+    }
 }

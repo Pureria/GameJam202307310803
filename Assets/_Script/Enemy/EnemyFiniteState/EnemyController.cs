@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private EnemyData enemyData;
 
-    public Transform ShotPosition;
+    public List<Transform> ShotPosition = new List<Transform>();
 
     public EnemyData.EnemyShotPattern nowShotPattern { get; private set; }
 
@@ -110,7 +110,7 @@ public class EnemyController : MonoBehaviour
     public GameObject InstantiateAmmo(GameObject ammoObj, Quaternion rotation)
     {
         GameObject ret = null;
-        ret = Instantiate(ammoObj, ShotPosition.position, rotation);
+        ret = Instantiate(ammoObj, ShotPosition[0].position, rotation);
         return ret;
     }
 
@@ -119,7 +119,15 @@ public class EnemyController : MonoBehaviour
         int cnt = enemyData.shotPattern.Count - 1;
         float current = enemyData.EnemyHP / cnt;
         int num = (int)(Status.GetNowHP() / current);
+        EnemyData.EnemyShotPattern old = nowShotPattern;
         nowShotPattern = enemyData.shotPattern[cnt - num];
+
+        if(old != nowShotPattern)
+        {
+            Debug.Log("パターン変更");
+        }
     }
+
+    public bool GetNowInvincible() { return nowInvincible; }
     #endregion
 }

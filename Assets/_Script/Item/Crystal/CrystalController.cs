@@ -9,9 +9,7 @@ public class CrystalController : MonoBehaviour
     private Movement movement;
 
     [SerializeField]
-    private float crystalSpeed = 0.5f;
-    [SerializeField]
-    private float moveDeadZone = 0.2f;
+    private CrystalData crystalData;
 
     private Vector3 targetPosition;
     private Vector3 workspace;
@@ -24,10 +22,10 @@ public class CrystalController : MonoBehaviour
     private void Update()
     {
         workspace = targetPosition - transform.position;
-        Movement?.SetVelocity(workspace.normalized, crystalSpeed);
+        Movement?.SetVelocity(workspace.normalized, crystalData.CrystalSpeed);
 
         workspace = targetPosition - transform.position;
-        if (Mathf.Abs(workspace.x) < moveDeadZone && Mathf.Abs(workspace.y) < moveDeadZone)
+        if (Mathf.Abs(workspace.x) < crystalData.CrystalMoveDeadZone && Mathf.Abs(workspace.y) < crystalData.CrystalMoveDeadZone)
             targetPosition = moveRandomPosition();
     }
 
@@ -36,4 +34,6 @@ public class CrystalController : MonoBehaviour
         Vector3 randomPosi = new Vector3(Random.Range(FramePosition.LeftPosition, FramePosition.RightPosition), Random.Range(FramePosition.BottomPosition, FramePosition.TopPosition), 0);
         return randomPosi;
     }
+
+    public CrystalData GetCrystalData() { return crystalData; }
 }
