@@ -7,9 +7,6 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private bool debugNowGame;
-
-    [SerializeField]
     private float MaxTime = 60.0f;
     [SerializeField]
     private TextMeshProUGUI GameTimeText;
@@ -32,12 +29,24 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        #if UNITY_EDITOR
+        
+        // デバッグ用にタイムを表示するやつ.
+        isNowGame = true;
+        GameStartTime = Time.time;
+        GameTimeText.gameObject.SetActive(true);
+        
+        #else
+
+        // 本番環境では非表示にする.
         isNowGame = false;
+        GameTimeText.gameObject.SetActive(false);
+        
+        #endif
     }
 
     private void Update()
     {
-        
         if(isNowGame)
         {
             GameTime = MaxTime - (Time.time - GameStartTime);
@@ -47,21 +56,7 @@ public class GameManager : MonoBehaviour
             {
                 //ゲームオーバー処理
                 isNowGame = false;
-                debugNowGame = false;                
             }
-        }
-
-        //TODO::デバッグ用
-        if(debugNowGame && !isNowGame)
-        {
-            isNowGame = true;
-            GameStartTime = Time.time;
-            GameTimeText.enabled = true;
-        }
-        else if(!debugNowGame && isNowGame)
-        {
-            isNowGame = false;
-            GameTimeText.enabled = false;
         }
     }
 
