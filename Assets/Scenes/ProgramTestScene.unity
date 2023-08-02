@@ -130,94 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 596570877, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: DeadEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 596570877, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: deadEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 596570877, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: EntryEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 596570877, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: DeadEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 596570877, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: deadEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 596570877, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: EntryEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 596570877, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: DeadEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 431472289}
-    - target: {fileID: 596570877, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: deadEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1739006845}
-    - target: {fileID: 596570877, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: EntryEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 431472289}
-    - target: {fileID: 596570877, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: DeadEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 596570877, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: deadEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 596570877, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: DeadEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 596570877, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: EntryEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 596570877, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: deadEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Stop
-      objectReference: {fileID: 0}
-    - target: {fileID: 596570877, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: EntryEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 596570877, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: DeadEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 596570877, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: deadEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.ParticleSystem, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 596570877, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: EntryEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 596570877, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: EntryEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 596570877, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: DeadEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 596570877, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: deadEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 596570877, guid: 23f8e45246fd497408d647246c335209, type: 3}
-      propertyPath: EntryEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 1434460034, guid: 23f8e45246fd497408d647246c335209, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -385,11 +297,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &431472289 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8277036787151059193, guid: 07d55049c4b8bb64d991fe71805c22ac, type: 3}
-  m_PrefabInstance: {fileID: 2099165513}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &536560349
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,11 +641,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!198 &1739006845 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3181687491569459385, guid: 60c93d5cda18c034ab3bd81e0abf92c5, type: 3}
-  m_PrefabInstance: {fileID: 1775076976}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1775076976
 PrefabInstance:
   m_ObjectHideFlags: 0

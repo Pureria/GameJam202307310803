@@ -37,6 +37,8 @@ public class EnemyController : MonoBehaviour
 
     public EnemyData.EnemyShotPattern nowShotPattern { get; private set; }
 
+    public GameObject enemyHeart;
+
     private Core Core;
     public Damage Damage { get => damage ?? Core.GetCoreComponent(ref damage); }
     public Status Status { get => status ?? Core.GetCoreComponent(ref status); }

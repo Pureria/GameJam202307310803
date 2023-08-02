@@ -14,6 +14,10 @@ public class EnemyData : ScriptableObject
     [Header("Enemy Shot Interval")]
     public float EnemyShotInterval = 1.5f;
 
+    [Header("Enemy Heart")]
+    public GameObject EnemyHeart;
+    public Vector3 enemyHeartPosition;
+
     [Header("Enemy Shot Object")]
     [Tooltip("ShotPrefabsê›íË")]
     public EnemyShotPrefabs enemyShotPrefabs = new EnemyShotPrefabs();
