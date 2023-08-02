@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyController : MonoBehaviour
 {
@@ -17,10 +18,12 @@ public class EnemyController : MonoBehaviour
     public EnemyRemoveFrame RemoveFrameState { get; private set; }
     public EnemyOneLaser OneLaserState { get; private set; }
     public EnemyPlayerSearchShot PlayerSearchShotState { get; private set; }
+    public EnemyDead DeadState { get; private set; }
     #endregion
 
     #region Unity Variables
     public Animator _anim { get; private set; }
+    public UnityEvent deadEvent = new UnityEvent();
     #endregion
 
     #region Variables
@@ -59,6 +62,7 @@ public class EnemyController : MonoBehaviour
         RemoveFrameState = new EnemyRemoveFrame(this, stateMachine, enemyData, "idle");
         OneLaserState = new EnemyOneLaser(this, stateMachine, enemyData, "idle");
         PlayerSearchShotState = new EnemyPlayerSearchShot(this, stateMachine, enemyData, "idle");
+        DeadState = new EnemyDead(this, stateMachine, enemyData, "dead");
 
         nowShotPattern = enemyData.shotPattern[0];
         IdleState.SetLockTime(enemyData.EnemyShotInterval);
@@ -107,6 +111,13 @@ public class EnemyController : MonoBehaviour
         stateMachine.LogicUpdate();
         uiController.UpdateHPSlider(Status.GetNowHP(),Damage.damageTime);
 
+        float nowHp = Status.GetNowHP();
+        if(nowHp <= 0)
+        {
+            //TODO::HPがなくなった時の処理
+            stateMachine.ChangeState(DeadState);
+        }
+
         //デバッグ用
         if(Input.GetKey(KeyCode.UpArrow))
         {
@@ -121,6 +132,9 @@ public class EnemyController : MonoBehaviour
     #endregion
 
     #region Other Function
+    public void AnimationFinishedTrigger() { stateMachine.currentState.AnimationFinishedTrigger(); }
+    public void AnimationTrigger() { stateMachine.currentState.AnimationTrigger(); }
+
     public GameObject InstantiateAmmo(GameObject ammoObj, Quaternion rotation,Vector3 pos)
     {
         GameObject ret = null;
@@ -130,19 +144,6 @@ public class EnemyController : MonoBehaviour
 
     public void CheckAttackPattern()
     {
-        /*
-        int cnt = enemyData.shotPattern.Count - 1;
-        float current = enemyData.EnemyHP / cnt;
-        int num = (int)(Status.GetNowHP() / current);
-        EnemyData.EnemyShotPattern old = nowShotPattern;
-        nowShotPattern = enemyData.shotPattern[cnt - num];
-
-        if(old != nowShotPattern)
-        {
-            Debug.Log("パターン変更");
-        }
-        */
-
         EnemyData.EnemyShotPattern old = nowShotPattern;
 
         int cnt = enemyData.shotPattern.Count;
@@ -172,13 +173,36 @@ public class EnemyController : MonoBehaviour
             case EnemyData.AttackPosition.PositionTop:
                 ret = shotPosition.ShotPositionTop.position;
                 break;
+
+            case EnemyData.AttackPosition.PositionTopLeft:
+                ret = shotPosition.ShotPositionTopLeft.position;
+                break;
+
+            case EnemyData.AttackPosition.PositionTopRight:
+                ret = shotPosition.ShotPositionTopRight.position;
+                break;
+
             case EnemyData.AttackPosition.PositionLeft:
                 ret = shotPosition.ShotPositionLeft.position;
                 break;
+
             case EnemyData.AttackPosition.PositionRight:
                 ret = shotPosition.ShotPositionRight.position;
                 break;
+
+            case EnemyData.AttackPosition.PositionBottom:
+                ret = shotPosition.ShotPositionBottom.position;
+                break;
+
+            case EnemyData.AttackPosition.PositionBottomLeft:
+                ret = shotPosition.ShotPositionBottomLeft.position;
+                break;
+
+            case EnemyData.AttackPosition.PositionBottomRight:
+                ret = shotPosition.ShotPositionBottomRight.position;
+                break;
             default:
+                ret = shotPosition.ShotPositionTop.position;
                 break;
         }
         return ret;
@@ -190,6 +214,11 @@ public class EnemyController : MonoBehaviour
 public class ShotPos
 {
     public Transform ShotPositionTop;
+    public Transform ShotPositionTopLeft;
+    public Transform ShotPositionTopRight;
     public Transform ShotPositionLeft;
     public Transform ShotPositionRight;
+    public Transform ShotPositionBottom;
+    public Transform ShotPositionBottomLeft;
+    public Transform ShotPositionBottomRight;
 }

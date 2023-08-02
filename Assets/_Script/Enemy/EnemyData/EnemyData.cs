@@ -76,8 +76,13 @@ public class EnemyData : ScriptableObject
     public enum AttackPosition
     {
         PositionTop,
+        PositionTopLeft,
+        PositionTopRight,
         PositionLeft,
         PositionRight,
+        PositionBottom,
+        PositionBottomLeft,
+        PositionBottomRight,
         PositionCount
     }
 }
