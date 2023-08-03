@@ -941,19 +941,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 880332229774825937, guid: d91dd2065b96fab45b82288d53d40212, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 880332229774825937, guid: d91dd2065b96fab45b82288d53d40212, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6030574005356180241, guid: d91dd2065b96fab45b82288d53d40212, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6030574005356180241, guid: d91dd2065b96fab45b82288d53d40212, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7110723132625608120, guid: d91dd2065b96fab45b82288d53d40212, type: 3}
       propertyPath: m_RootOrder
@@ -1005,7 +1005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7110723132625608123, guid: d91dd2065b96fab45b82288d53d40212, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d91dd2065b96fab45b82288d53d40212, type: 3}
@@ -1093,10 +1093,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5339987200690232640, guid: e80d6cd6491be27418f075b5608017c9, type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5339987201322476430, guid: e80d6cd6491be27418f075b5608017c9, type: 3}
       propertyPath: m_Name
       value: Frame
