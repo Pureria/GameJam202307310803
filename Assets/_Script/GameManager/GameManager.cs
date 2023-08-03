@@ -76,8 +76,10 @@ public class GameManager : MonoBehaviour
     //‰Šú‰»ˆ—
     private void GameInitialize()
     {
+        FramePosition.Instance.gameObject.SetActive(true);
         Player.gameObject.SetActive(true);
         Player.Initialize();
+        FramePosition.Instance.Initialize();
 
         BossManager.Instance?.Initialize();
         BossManager.Instance?.InstantiateNextBoss();
