@@ -1,18 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using GJ.Ranking;
 
-public class ResultPopupPresenter : MonoBehaviour
+
+namespace GJ.UI.Presenter
 {
-    // Start is called before the first frame update
-    void Start()
+    public class ResultPopupPresenter : MonoBehaviour
     {
-        
-    }
+		[SerializeField] private Button retryButton;
+		[SerializeField] private Button gotoTitleButton;
+		[SerializeField] private RankingView rankingView;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+		private void Awake()
+		{
+			this.ConnectRankingModel();	
+		}
+
+
+		private void ConnectRankingModel()
+		{
+			RankingModel.Instance.OnRankingUpdate.AddListener(
+				this.rankingView.UpdateRankView
+			);
+		}
+	}
 }
