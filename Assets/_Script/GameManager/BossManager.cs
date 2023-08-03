@@ -15,7 +15,10 @@ public class BossManager : MonoBehaviour
     private void Awake()
     {
         if (Instance == null)
+        {
             Instance = this;
+            Initialize();
+        }
         else
             GameObject.Destroy(this.gameObject);
     }

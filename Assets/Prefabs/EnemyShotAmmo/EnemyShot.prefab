@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 3082600099984756904}
   - component: {fileID: 6686325461754489816}
   - component: {fileID: 7937230632042922527}
-  - component: {fileID: 470328973997609760}
   - component: {fileID: 160389119}
+  - component: {fileID: 4356636605875050220}
   m_Layer: 0
   m_Name: EnemyShot
   m_TagString: Untagged
@@ -151,19 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cf4be4ee19cc344f81b816b3c3944b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &470328973997609760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6686325461754489819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b68a48cfd94c62d448ec571165eb7554, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DestroyTime: 2.5
 --- !u!114 &160389119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,3 +164,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotateSpeed: 1200
+--- !u!114 &4356636605875050220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6686325461754489819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe83e0b098305e4980e84c5e6fdfa78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectRenderer: {fileID: 6686325461754489814}
