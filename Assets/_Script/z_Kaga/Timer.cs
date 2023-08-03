@@ -1,4 +1,7 @@
 using UnityEngine;
+using UnityEngine.Events;
+using GJ.Ranking;
+
 
 namespace GJ
 {
@@ -9,9 +12,25 @@ namespace GJ
         private bool isCount;
 
 
+        [SerializeField] private UnityEvent<float> onTimerStop = new UnityEvent<float>();
+        [SerializeField] private UnityEvent<float> onNewRecord = new UnityEvent<float>();
+
+
         public float Time
         {
             get { return this.time; }
+        }
+
+
+        public UnityEvent<float> OnTimerStop
+        {
+            get { return this.onTimerStop; }
+        }
+
+
+        public UnityEvent<float> OnNewRecord
+        {
+            get { return this.onNewRecord; }
         }
 
 
@@ -40,6 +59,9 @@ namespace GJ
         public void StopTimer()
         {
             this.isCount = false;
+            this.onTimerStop.Invoke(this.time);
+            var newRecord = RankingModel.Instance.IsRankIn(this.time);
+            if (newRecord) this.onNewRecord.Invoke(this.time);
         }
 
 

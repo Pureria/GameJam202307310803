@@ -48,17 +48,14 @@ namespace GJ.Ranking
 
         private RankingModel()
         {
-            this.rankingData = DataSaveUtility.Load<RankingData>(savePath);
-            if (this.rankingData == null)
-            {
-                this.rankingData = new RankingData(maxRankingRecords);
-            }
+            this.ReloadJson();
         }
 
 
         // ランキング登録ポップアップを表示するためにランクインしたか確認する.
         public bool IsRankIn(float seconds)
         {
+            this.ReloadJson();
             return this.rankingData.IsRankIn(seconds);
         }
 
@@ -66,15 +63,29 @@ namespace GJ.Ranking
         // ランキングに登録する.
         public void Add(string name, float seconds)
         {
+            this.ReloadJson();
             this.rankingData.Add(name, seconds);
             this.onRankingUpdate.Invoke(this.rankingData);
+            DataSaveUtility.Save(this.rankingData, savePath);
         }
 
 
         // View側が任意のタイミングでランキング情報を取得するために使用する.
         public void Reload()
         {
+            this.ReloadJson();
             this.onRankingUpdate.Invoke(this.rankingData);
+        }
+
+
+        private void ReloadJson()
+        {
+            this.rankingData = DataSaveUtility.Load<RankingData>(savePath);
+            if (this.rankingData == null)
+            {
+                this.rankingData = new RankingData(maxRankingRecords);
+            }
+            this.rankingData.Cleaning();
         }
     }
 }

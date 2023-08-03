@@ -39,16 +39,16 @@ namespace GJ.DataSave
         where T : class
         {
             var baseDir = Application.persistentDataPath;
-            var loadPath = $"{baseDir}/filePath";
+            var loadPath = $"{baseDir}/{filePath}";
             var encoding = Encoding.UTF8;
 
             if (!File.Exists(loadPath)) return null;
 
             var reader = new StreamReader(loadPath, encoding);
             var json = reader.ReadToEnd();
-            var ret = JsonUtility.FromJson<T>(json);
+            reader.Close();
 
-            return ret;
+            return JsonUtility.FromJson<T>(json);
         }
     }
 }

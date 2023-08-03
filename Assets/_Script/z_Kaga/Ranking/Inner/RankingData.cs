@@ -8,8 +8,8 @@ namespace GJ.Ranking
     public class RankingData : IReadOnlyRankData
     {
         // 空のランキングデータには null を詰める.
-        private List<RankingRow> rankingData;
-        private int maxColumns;
+        [SerializeField] private List<RankingRow> rankingData;
+        [SerializeField] private int maxColumns;
 
 
         public IReadOnlyList<RankingRow> Rows
@@ -62,6 +62,18 @@ namespace GJ.Ranking
             for (int i = 0; i < this.maxColumns; i++)
             {
                 this.rankingData.Add(newRanking[i]);
+            }
+        }
+
+
+        // JSONUtility で読み取ったデータがnullにならないっぽいのでnull化する.
+        public void Cleaning()
+        {
+            for (int i = 0; i < this.rankingData.Count; i++)
+            {
+                var target = this.rankingData[i];
+                if (target == null) continue;
+                if (target.Seconds == 0) this.rankingData[i] = null;
             }
         }
     }
