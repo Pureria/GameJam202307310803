@@ -43,10 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-       // GameManager.Instance?.SetPlayer(this.gameObject);
-        _anim = GetComponent<Animator>();
-        Core = GetComponentInChildren<Core>();
-        inputHandler = InputManager.Instance.GetPlayerInput();
+       // GameManager.Instance?.SetPlayer(this.gameObject);      
 
         Initialize();
     }
@@ -132,6 +129,9 @@ public class PlayerController : MonoBehaviour
 
     public void Initialize()
     {
+        _anim = GetComponent<Animator>();
+        Core = GetComponentInChildren<Core>();
+        inputHandler = InputManager.Instance.GetPlayerInput();
         Status?.Initialize(1.0f);
         //stateMachine‚Ì‰Šú‰»ˆ—
         stateMachine.Initialize(MoveState);
