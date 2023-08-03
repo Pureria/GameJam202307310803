@@ -17,6 +17,8 @@ MonoBehaviour:
   EnemyShotInterval: 3
   EnemyHeart: {fileID: 8277036787151059193, guid: 07d55049c4b8bb64d991fe71805c22ac, type: 3}
   enemyHeartPosition: {x: 0, y: -1.3, z: 0}
+  SpawnEnemyHeart: 0
+  RunAwayTime: 30
   enemyShotPrefabs:
     Shot1: {fileID: 6686325461754489819, guid: 3c1968457e9cce241ae25905591ddc09, type: 3}
     shot1Speed: 0.1

@@ -150,11 +150,11 @@ public class FramePosition : MonoBehaviour
 
     public void HideFrame()
     {
-        sprite.color = new Color(sprite.color.a, sprite.color.r, sprite.color.g, 0);
+        sprite.color = new Color(0, 0, 0, 0);
     }
 
     public void ShowFrame()
     {
-        sprite.color = new Color(sprite.color.a, sprite.color.r, sprite.color.g, 1);
+        sprite.color = new Color(0, 0, 0, 1);
     }
 }
