@@ -23,7 +23,7 @@ namespace GJ.Health
 
 		private void Awake()
 		{
-            this.health = this.initialHealth;
+            this.Initialize();
 		}
 
 
@@ -31,6 +31,12 @@ namespace GJ.Health
 		{
             this.health -= Time.deltaTime;
             if (this.health <= 0) this.onDeath.Invoke();
+        }
+
+
+        public void Initialize()
+        {
+            this.health = this.initialHealth;
         }
 
 

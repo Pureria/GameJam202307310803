@@ -11,6 +11,11 @@ namespace GJ.UI.Presenter
         [SerializeField] private Button gotoTitleButton;
         [SerializeField] private RankingView rankingView;
         [SerializeField] private ResultTimeDisplay resultTimeDisplay;
+        [SerializeField] private BossBGManager bossBGManager;
+
+        [SerializeField] private ShowHide titlePopup;
+        [SerializeField] private ShowHide resultPopup;
+
         [SerializeField] private Timer timer;
 
 
@@ -18,6 +23,26 @@ namespace GJ.UI.Presenter
         {
             this.ConnectRankingModel();
             this.ConnectResultTimeDisplay();
+
+
+            this.retryButton.onClick.AddListener(
+                () =>
+                {
+                    this.resultPopup.Hide();
+                    this.bossBGManager.Initialize();
+                    GameManager.Instance.Restart();
+                }
+            );
+
+
+            this.gotoTitleButton.onClick.AddListener(
+                () =>
+                {
+                    this.bossBGManager.Initialize();
+                    this.resultPopup.Hide();
+                    this.titlePopup.Show();
+                }
+            );
         }
 
 

@@ -8,6 +8,7 @@ namespace GJ
 {
     public class BossBGManager : MonoBehaviour
     {
+        [SerializeField] private List<Transform> resetTarget;
         [SerializeField] private List<UnityEvent> bossPhaseEvents;
         private static BossBGManager instance;
         private int count;
@@ -28,6 +29,10 @@ namespace GJ
         public void Initialize()
         {
             this.count = 0;
+            foreach (Transform item in this.resetTarget)
+            {
+                item.gameObject.SetActive(false);
+            }
         }
 
 
