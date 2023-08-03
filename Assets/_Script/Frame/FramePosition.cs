@@ -17,7 +17,7 @@ public class FramePosition : MonoBehaviour
     private int quakeMaxCount = 1;
     [SerializeField]
     private float quakePower = 0.5f;
-    [SerializeField] Color color;
+    [SerializeField] SpriteRenderer sprite;
 
     public static float LeftPosition = 0.0f;
     public static float RightPosition = 0.0f;
@@ -150,11 +150,11 @@ public class FramePosition : MonoBehaviour
 
     public void HideFrame()
     {
-        color.a = 0;
+        sprite.color = new Color(sprite.color.a, sprite.color.r, sprite.color.g, 0);
     }
 
     public void ShowFrame()
     {
-        color.a = 1;
+        sprite.color = new Color(sprite.color.a, sprite.color.r, sprite.color.g, 1);
     }
 }
