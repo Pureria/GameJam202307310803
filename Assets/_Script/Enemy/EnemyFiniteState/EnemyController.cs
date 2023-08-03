@@ -43,7 +43,8 @@ public class EnemyController : MonoBehaviour
 
     public EnemyData.EnemyShotPattern nowShotPattern { get; private set; }
 
-    public GameObject enemyHeart;
+    //S‘Ÿ
+    [HideInInspector]public GameObject enemyHeartprefab;
 
     private Core Core;
     public Damage Damage { get => damage ?? Core.GetCoreComponent(ref damage); }
@@ -210,6 +211,12 @@ public class EnemyController : MonoBehaviour
                 break;
         }
         return ret;
+    }
+
+    public void GameEnd()
+    {
+        GameObject.Destroy(enemyHeartprefab);
+        GameObject.Destroy(gameObject);
     }
     #endregion
 }

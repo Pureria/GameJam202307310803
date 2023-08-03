@@ -514,11 +514,6 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
---- !u!1 &1313052615 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1477088401513651321, guid: 1357406bb0ac7b948a96692b3dfe7d6f, type: 3}
-  m_PrefabInstance: {fileID: 1477088402420094856}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1735942411
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,7 +676,7 @@ PrefabInstance:
     - target: {fileID: 786141865554534092, guid: 50e0735ac2005fa4085db498c98c773f, type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 1313052615}
+      objectReference: {fileID: 1477088402420094857}
     - target: {fileID: 786141865554534092, guid: 50e0735ac2005fa4085db498c98c773f, type: 3}
       propertyPath: GameTimeText
       value: 
@@ -793,6 +788,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1357406bb0ac7b948a96692b3dfe7d6f, type: 3}
+--- !u!114 &1477088402420094857 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1477088401513651326, guid: 1357406bb0ac7b948a96692b3dfe7d6f, type: 3}
+  m_PrefabInstance: {fileID: 1477088402420094856}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083673f3708a9f640afaa5c80fff64cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4179177749525429547
 PrefabInstance:
   m_ObjectHideFlags: 0
