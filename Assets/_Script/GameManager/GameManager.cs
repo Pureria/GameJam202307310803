@@ -81,6 +81,8 @@ public class GameManager : MonoBehaviour
 
         BossManager.Instance?.Initialize();
         BossManager.Instance?.InstantiateNextBoss();
+
+        FramePosition.Instance.ShowFrame();
     }
 
     private void GameRestart()
@@ -93,6 +95,7 @@ public class GameManager : MonoBehaviour
     {
         Player.gameObject.SetActive(false);
         BossManager.Instance?.GameEnd();
+        FramePosition.Instance.HideFrame();
     }
 
     #region Set Function
