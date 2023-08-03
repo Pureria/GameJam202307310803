@@ -15,6 +15,12 @@ namespace GJ.UI
         [SerializeField] private Text value;
         [SerializeField] private string formatString;
 
+        [Space]
+        [Header("空データの表示設定")]
+        [SerializeField] private string emptyLabelText;
+        [SerializeField] private string emptyTimeText;
+
+
         private float seconds;
 
 
@@ -29,12 +35,23 @@ namespace GJ.UI
         }
 
 
-        private void Start()
+        public string Label
         {
-            this.label.text = labelText;
+            get { return this.labelText; }
+            set
+            {
+                this.labelText = value;
+                this.label.text = value;
+            }
+        }
 
-            // デバッグ用に初期値として適当な小数を入れてます.
-            this.Time = Mathf.PI;
+
+        // 空データを表示するためのメソッド.
+        // まだ記録がない場合に使用する.
+        public void SetEmpty()
+        {
+            this.Label = this.emptyLabelText;
+            this.value.text = this.emptyTimeText;
         }
     }
 }

@@ -136,6 +136,8 @@ MonoBehaviour:
   labelText: 
   value: {fileID: 2144784235330182015}
   formatString: 
+  emptyLabelText: NO DATA
+  emptyTimeText: --.--
 --- !u!114 &4487223649519525825
 MonoBehaviour:
   m_ObjectHideFlags: 0

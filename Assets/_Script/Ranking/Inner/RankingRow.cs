@@ -5,7 +5,7 @@ using UnityEngine;
 namespace GJ.Ranking
 {
     [Serializable]
-    internal class RankingColumn
+    public class RankingRow
     {
         [SerializeField] private FixedLengthString username;
         [SerializeField] private float seconds;
@@ -23,10 +23,19 @@ namespace GJ.Ranking
         }
 
 
-        public RankingColumn(FixedLengthString userName, float seconds)
+        public RankingRow(FixedLengthString userName, float seconds)
         {
             this.username = userName;
             this.seconds = seconds;
+        }
+
+
+        public static int ConpareTo(RankingRow a, RankingRow b)
+        {
+            if (a == null && b == null) return 0;
+            if (a == null && b != null) return 1;
+            if (a != null && b == null) return -1;
+            return a.seconds.CompareTo(b.seconds);
         }
     }
 }

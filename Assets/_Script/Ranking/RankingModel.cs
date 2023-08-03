@@ -1,4 +1,5 @@
-﻿using GJ.DataSave;
+﻿using UnityEngine.Events;
+using GJ.DataSave;
 
 
 namespace GJ.Ranking
@@ -7,9 +8,14 @@ namespace GJ.Ranking
     {
         private static string savePath = "ranking.json";
         private static int maxUserNameLength = 15;
-        private static int maxRankingRecords;
+        private static int maxRankingRecords = 5;
         private static RankingModel instance;
         private RankingData rankingData;
+
+
+        // ランキングが更新されたときに外に通知する.
+        private UnityEvent<IReadOnlyRankData>
+        onRankingUpdate = new UnityEvent<IReadOnlyRankData>();
 
 
         public static int MaxUserNameLength
@@ -24,13 +30,19 @@ namespace GJ.Ranking
         }
 
 
-        public RankingModel Instance
+        public static RankingModel Instance
         {
             get
             {
                 if (instance == null) instance = new RankingModel();
                 return instance;
             }
+        }
+
+
+        public UnityEvent<IReadOnlyRankData> OnRankingUpdate
+        {
+            get { return this.onRankingUpdate; }
         }
 
 
@@ -55,6 +67,14 @@ namespace GJ.Ranking
         public void Add(string name, float seconds)
         {
             this.rankingData.Add(name, seconds);
+            this.onRankingUpdate.Invoke(this.rankingData);
+        }
+
+
+        // View側が任意のタイミングでランキング情報を取得するために使用する.
+        public void Reload()
+        {
+            this.onRankingUpdate.Invoke(this.rankingData);
         }
     }
 }

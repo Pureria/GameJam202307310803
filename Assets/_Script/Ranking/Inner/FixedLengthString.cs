@@ -5,7 +5,7 @@ using UnityEngine;
 namespace GJ.Ranking
 {
     [Serializable]
-    internal class FixedLengthString
+    public class FixedLengthString
     {
         [SerializeField] private string value;
         [SerializeField] private int maxLength;
