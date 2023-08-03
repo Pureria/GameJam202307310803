@@ -80,7 +80,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1870810879994821217
 Transform:
   m_ObjectHideFlags: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  enemyData: {fileID: 11400000, guid: d89dc71e5fef19648bbd10c21cce7355, type: 2}
+  enemyData: {fileID: 11400000, guid: 3c20e1e3d40f982499f105ab3c3df6ba, type: 2}
   shotPosition:
     ShotPositionTop: {fileID: 2947833063998899746}
     ShotPositionTopLeft: {fileID: 2947833064375300832}

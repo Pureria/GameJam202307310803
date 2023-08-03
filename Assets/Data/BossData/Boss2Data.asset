@@ -1,0 +1,132 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8217b0ac47d816346abecfe6155e122a, type: 3}
+  m_Name: Boss2Data
+  m_EditorClassIdentifier: 
+  EnemyHP: 100
+  EnemyInvincibleTime: 0.5
+  EnemyShotInterval: 3
+  EnemyHeart: {fileID: 8277036787151059193, guid: 07d55049c4b8bb64d991fe71805c22ac, type: 3}
+  enemyHeartPosition: {x: 0, y: -1.3, z: 0}
+  enemyShotPrefabs:
+    Shot1: {fileID: 6686325461754489819, guid: 3c1968457e9cce241ae25905591ddc09, type: 3}
+    shot1Speed: 0.1
+    Laser1: {fileID: 8080756347745273020, guid: 7864bfb5ccd5a3242a6f918c25c1b0a7, type: 3}
+    Laser2: {fileID: 818433816557447364, guid: 9cff47b12c2aa29449a8dc84dfe2e49f, type: 3}
+    SearchShot: {fileID: 8723377884075522209, guid: f028fefb6b5fdd04d807b355812bb296, type: 3}
+  EnemyShot1Count: 8
+  EnemyShot2Count: 8
+  EnemyShot2AddX: 0.8
+  EnemyFrameScale: {x: 14, y: 6, z: 0}
+  shotPattern:
+  - attackType:
+    - type: 0
+      position: 0
+      nextStateInterval: 5
+    - type: 2
+      position: 0
+      nextStateInterval: 0.3
+    - type: 2
+      position: 1
+      nextStateInterval: 0.3
+    - type: 2
+      position: 2
+      nextStateInterval: 0.3
+    - type: 0
+      position: 0
+      nextStateInterval: 5
+    - type: 3
+      position: 0
+      nextStateInterval: 5
+  - attackType:
+    - type: 7
+      position: 0
+      nextStateInterval: 1
+    - type: 7
+      position: 1
+      nextStateInterval: 1
+    - type: 7
+      position: 2
+      nextStateInterval: 2
+  - attackType:
+    - type: 4
+      position: 0
+      nextStateInterval: 0.3
+    - type: 4
+      position: 1
+      nextStateInterval: 0.3
+    - type: 4
+      position: 2
+      nextStateInterval: 3
+  - attackType:
+    - type: 5
+      position: 0
+      nextStateInterval: 2
+    - type: 4
+      position: 1
+      nextStateInterval: 0.2
+    - type: 4
+      position: 0
+      nextStateInterval: 0.2
+    - type: 4
+      position: 2
+      nextStateInterval: 0.2
+    - type: 4
+      position: 4
+      nextStateInterval: 0.2
+    - type: 4
+      position: 7
+      nextStateInterval: 0.2
+    - type: 4
+      position: 5
+      nextStateInterval: 0.2
+    - type: 4
+      position: 6
+      nextStateInterval: 0.2
+    - type: 4
+      position: 3
+      nextStateInterval: 0.2
+    - type: 4
+      position: 1
+      nextStateInterval: 3
+    - type: 6
+      position: 0
+      nextStateInterval: 5
+  - attackType:
+    - type: 5
+      position: 0
+      nextStateInterval: 0.5
+    - type: 0
+      position: 0
+      nextStateInterval: 0.5
+    - type: 0
+      position: 1
+      nextStateInterval: 0.5
+    - type: 0
+      position: 2
+      nextStateInterval: 0.5
+    - type: 6
+      position: 2
+      nextStateInterval: 5
+  - attackType:
+    - type: 1
+      position: 0
+      nextStateInterval: 0.3
+    - type: 1
+      position: 1
+      nextStateInterval: 0.3
+    - type: 1
+      position: 2
+      nextStateInterval: 0.3
+    - type: 0
+      position: 0
+      nextStateInterval: 5
