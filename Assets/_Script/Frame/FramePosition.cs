@@ -44,6 +44,13 @@ public class FramePosition : MonoBehaviour
         else
             GameObject.Destroy(this.gameObject);
     }
+    private void Start()
+    {
+        defScale = transform.localScale;
+        isChangedScale = true;
+        spriteDefPos = spriteTransform.position;
+        SetPosition();
+    }
 
     private void Update()
     {
@@ -127,14 +134,6 @@ public class FramePosition : MonoBehaviour
         nowQuakeCount = 0;
         isQuakeEnd = false;
         quakeStartTime = Time.time;
-    }
-
-    public void Initialize()
-    {
-        defScale = transform.localScale;
-        isChangedScale = true;
-        spriteDefPos = spriteTransform.position;
-        SetPosition();
     }
 
     public static float Animation(float startTime, float endTime, float startKey, float endKey, float nowTime)
