@@ -48,9 +48,7 @@ public class PlayerController : MonoBehaviour
         Core = GetComponentInChildren<Core>();
         inputHandler = InputManager.Instance.GetPlayerInput();
 
-        Status?.Initialize(1.0f);
-        //stateMachine‚Ì‰Šú‰»ˆ—
-        stateMachine.Initialize(MoveState);
+        Initialize();
     }
 
     private void Update()
@@ -131,5 +129,12 @@ public class PlayerController : MonoBehaviour
     }
 
     public PlayerData GetPlayerData() { return playerData; }
+
+    public void Initialize()
+    {
+        Status?.Initialize(1.0f);
+        //stateMachine‚Ì‰Šú‰»ˆ—
+        stateMachine.Initialize(MoveState);
+    }
     #endregion
 }

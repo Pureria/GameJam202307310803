@@ -47,4 +47,10 @@ MonoBehaviour:
   debugNowGame: 0
   MaxTime: 10
   GameTimeText: {fileID: 0}
+  gameClearEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  gameOverEvent:
+    m_PersistentCalls:
+      m_Calls: []
   Player: {fileID: 0}

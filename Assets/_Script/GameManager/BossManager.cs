@@ -10,6 +10,8 @@ public class BossManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> BossPrefab = new List<GameObject>();
 
+    private GameObject nowBoss;
+
     private int nowBossCount;
 
     private void Awake()
@@ -32,16 +34,24 @@ public class BossManager : MonoBehaviour
     public void InstantiateNextBoss()
     {
         if (nowBossCount > BossPrefab.Count) return;
-        GameObject boss = Instantiate(BossPrefab[nowBossCount], Vector3.zero, Quaternion.identity);
+        nowBoss = Instantiate(BossPrefab[nowBossCount], Vector3.zero, Quaternion.identity);
         nowBossCount++;
 
         if (nowBossCount < BossPrefab.Count)
-            BossInitialize(boss);
+            BossInitialize(nowBoss);
         else
-            LastBossInitialize(boss);
+            LastBossInitialize(nowBoss);
     }
 
-    public void BossInitialize(GameObject boss)
+    public void GameEnd()
+    {
+        EnemyController ec;
+        ec = nowBoss.GetComponent<EnemyController>();
+        if (ec == null) return;
+        ec.GameEnd();
+    }
+
+    private void BossInitialize(GameObject boss)
     {
         EnemyController ec;
         ec = boss.GetComponent<EnemyController>();
@@ -51,8 +61,14 @@ public class BossManager : MonoBehaviour
                InstantiateNextBoss();
             };
     }
-    public void LastBossInitialize(GameObject boss)
+    private void LastBossInitialize(GameObject boss)
     {
-        //TODO::ç≈å„ÇÃÉ{ÉXÇÃDeadEventÇê›íË
+        EnemyController ec;
+        ec = boss.GetComponent<EnemyController>();
+        if (ec != null)
+            ec.DeadAction = () =>
+            {
+                GameManager.Instance?.GameClear();
+            };
     }
 }
