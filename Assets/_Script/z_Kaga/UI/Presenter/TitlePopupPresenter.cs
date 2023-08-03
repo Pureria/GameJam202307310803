@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 using GJ.Ranking;
 
@@ -10,8 +11,13 @@ namespace GJ.UI.Presenter
         [SerializeField] private Button startButton;
         [SerializeField] private Button rankingButton;
         [SerializeField] private Button exitButton;
+		[SerializeField] private Slider soundSlider;
 		[SerializeField] private Timer timer;
 		[SerializeField] private ShowHide rankingModalShowHide;
+
+		[Space]
+		[SerializeField] private AudioMixer audioMixer;
+		[SerializeField] private AudioSource buttonPushSound;
 
 
 		private void Awake()
@@ -19,6 +25,8 @@ namespace GJ.UI.Presenter
 			this.ConnectTimer();
 			this.ConnectRankingModal();
 			this.ConnectApplicationExit();
+			this.ConnectAudioSource();
+			this.ConnectAudioMixer();
 		}
 
 
@@ -48,6 +56,32 @@ namespace GJ.UI.Presenter
 			// ランキングモーダルを開くたびにリロードする.
 			this.rankingButton.onClick.AddListener(
 				RankingModel.Instance.Reload
+			);
+		}
+
+
+		private void ConnectAudioSource()
+		{
+			this.startButton.onClick.AddListener(
+				this.buttonPushSound.Play
+			);
+
+
+			this.rankingButton.onClick.AddListener(
+				this.buttonPushSound.Play
+			);
+
+
+			this.exitButton.onClick.AddListener(
+				this.buttonPushSound.Play
+			);
+		}
+
+
+		private void ConnectAudioMixer()
+		{
+			this.soundSlider.onValueChanged.AddListener(
+				(value)=> { this.audioMixer.SetFloat("SE", value); }
 			);
 		}
 	}

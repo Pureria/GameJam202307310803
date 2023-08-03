@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using GJ;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +16,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI GameTimeText;
 
+    // TODO: GameStart() ‚ª’Ç‰Á‚³‚êŽŸ‘æŽg‚¤.
+    private Timer timeAttackTimer;
+    private UnityEvent onGameClear = new UnityEvent();
+    public UnityEvent OnGameClear { get { return this.onGameClear; } }
+    // --------
+
     public static GameManager Instance;
     public GameObject Player;
     public GameObject Enemy { get; private set; }
@@ -24,10 +32,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-        else
-            GameObject.Destroy(this);      
+        if (Instance == null) Instance = this;
+        else GameObject.Destroy(this);
     }
 
     private void Start()
