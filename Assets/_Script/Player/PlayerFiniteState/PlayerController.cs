@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     #region State Varibles
     [SerializeField]
     private PlayerData playerData;
+    [SerializeField]
+    private DamageParticle damageParticle;
     public PlayerStateMachine stateMachine { get; private set; }
     public PlayerInputHandler inputHandler { get; private set; }
 
@@ -41,10 +43,10 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance?.SetPlayer(this.gameObject);
+       // GameManager.Instance?.SetPlayer(this.gameObject);
         _anim = GetComponent<Animator>();
         Core = GetComponentInChildren<Core>();
-        inputHandler = GetComponent<PlayerInputHandler>();
+        inputHandler = InputManager.Instance.GetPlayerInput();
 
         Status?.Initialize(1.0f);
         //stateMachine‚Ì‰Šú‰»ˆ—
@@ -76,6 +78,8 @@ public class PlayerController : MonoBehaviour
         //TODO::ƒ_ƒ[ƒW”»’è
         if(Status.isDead && stateMachine.currentState != DeadState)
         {
+            damageParticle.PlayParticle();
+            FramePosition.Instance?.SetQuake();
             stateMachine.ChangeState(DeadState);
         }
     }

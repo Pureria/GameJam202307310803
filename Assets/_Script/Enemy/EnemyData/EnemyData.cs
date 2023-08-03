@@ -14,6 +14,10 @@ public class EnemyData : ScriptableObject
     [Header("Enemy Shot Interval")]
     public float EnemyShotInterval = 1.5f;
 
+    [Header("Enemy Heart")]
+    public GameObject EnemyHeart;
+    public Vector3 enemyHeartPosition;
+
     [Header("Enemy Shot Object")]
     [Tooltip("ShotPrefabsê›íË")]
     public EnemyShotPrefabs enemyShotPrefabs = new EnemyShotPrefabs();
@@ -56,6 +60,8 @@ public class EnemyData : ScriptableObject
 
         public GameObject Laser1;
         public GameObject Laser2;
+
+        public GameObject SearchShot;
     }
 
     public enum AttackType
@@ -67,14 +73,20 @@ public class EnemyData : ScriptableObject
         OneShotLaser,
         ZoomFrame,
         RemoveFrame,
+        PlayerSearchShot,
         AttackCount
     }
 
     public enum AttackPosition
     {
         PositionTop,
+        PositionTopLeft,
+        PositionTopRight,
         PositionLeft,
         PositionRight,
+        PositionBottom,
+        PositionBottomLeft,
+        PositionBottomRight,
         PositionCount
     }
 }

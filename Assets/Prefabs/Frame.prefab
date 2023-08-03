@@ -132,3 +132,6 @@ MonoBehaviour:
   ChangeScaleTime: 0.7
   isDebugChangeScale: 0
   debugChangeScale: {x: 14, y: 6, z: 0}
+  spriteTransform: {fileID: 5339987200690232655}
+  quakeMaxCount: 10
+  quakePower: 0.8

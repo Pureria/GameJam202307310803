@@ -11,6 +11,12 @@ public class FramePosition : MonoBehaviour
     private bool isDebugChangeScale;
     [SerializeField]
     private Vector3 debugChangeScale = Vector3.zero;
+    [SerializeField]
+    private Transform spriteTransform;
+    [SerializeField]
+    private int quakeMaxCount = 1;
+    [SerializeField]
+    private float quakePower = 0.5f;
 
     public static float LeftPosition = 0.0f;
     public static float RightPosition = 0.0f;
@@ -21,8 +27,12 @@ public class FramePosition : MonoBehaviour
 
     //フレームのスケール変更処理が終了しているか
     public bool isChangedScale { get; private set; }
+    public bool isQuakeEnd { get; private set; }
 
+    private int nowQuakeCount;
     private float nowChangeScaleTime;
+    private float quakeStartTime;
+    private Vector3 spriteDefPos;
     private Vector3 reChangeScale;
     private Vector3 currentScale;
     private Vector3 defScale;
@@ -38,6 +48,7 @@ public class FramePosition : MonoBehaviour
     {
         defScale = transform.localScale;
         isChangedScale = true;
+        spriteDefPos = spriteTransform.position;
         SetPosition();
     }
 
@@ -62,6 +73,21 @@ public class FramePosition : MonoBehaviour
         {
             isDebugChangeScale = false;
             ChangeScale(debugChangeScale.x, debugChangeScale.y);
+        }
+
+        //枠のみが揺れる処理
+        if(!isQuakeEnd)
+        {
+            float p = Mathf.Abs(quakePower);
+            Vector3 pow = new Vector3(Random.Range(p * -1, p), Random.Range(p * -1, p), 0);
+            spriteTransform.position = spriteDefPos + pow;
+            nowQuakeCount++;
+            //終了確認
+            if(nowQuakeCount >= quakeMaxCount)
+            {
+                spriteTransform.position = spriteDefPos;
+                isQuakeEnd = true;
+            }
         }
     }
 
@@ -101,6 +127,13 @@ public class FramePosition : MonoBehaviour
         isChangedScale = false;
         reChangeScale = transform.localScale;
         currentScale = defScale;
+    }
+
+    public void SetQuake()
+    {
+        nowQuakeCount = 0;
+        isQuakeEnd = false;
+        quakeStartTime = Time.time;
     }
 
     public static float Animation(float startTime, float endTime, float startKey, float endKey, float nowTime)

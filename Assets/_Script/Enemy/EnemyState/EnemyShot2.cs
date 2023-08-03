@@ -26,19 +26,19 @@ public class EnemyShot2 : EnemyState
 
         workspace = GameManager.Instance.Player.transform.position - InstPosition;
         workspace.x = workspace.x + enemyData.EnemyShot2AddX;
-        shot = enemy.InstantiateAmmo(enemyData.enemyShotPrefabs.Shot1, Quaternion.identity, InstPosition);
+        shot = enemy.Instantiate(enemyData.enemyShotPrefabs.Shot1, Quaternion.identity, InstPosition);
         shot.GetComponent<EnemyShotMove>().SetDirection(workspace.normalized, enemyData.enemyShotPrefabs.shot1Speed);
 
         for (int i = 1; i <= enemyData.EnemyShot2Count; i++)
         {
             workspace = (GameManager.Instance.Player.transform.position - InstPosition);
             workspace.x = workspace.x + (1.5f * i) + enemyData.EnemyShot2AddX;
-            shot = enemy.InstantiateAmmo(enemyData.enemyShotPrefabs.Shot1, Quaternion.identity, InstPosition);
+            shot = enemy.Instantiate(enemyData.enemyShotPrefabs.Shot1, Quaternion.identity, InstPosition);
             shot.GetComponent<EnemyShotMove>().SetDirection(workspace.normalized, enemyData.enemyShotPrefabs.shot1Speed);
 
             workspace = (GameManager.Instance.Player.transform.position - InstPosition);
             workspace.x = workspace.x - (1.5f * i) + enemyData.EnemyShot2AddX;
-            shot = enemy.InstantiateAmmo(enemyData.enemyShotPrefabs.Shot1, Quaternion.identity, InstPosition);
+            shot = enemy.Instantiate(enemyData.enemyShotPrefabs.Shot1, Quaternion.identity, InstPosition);
             shot.GetComponent<EnemyShotMove>().SetDirection(workspace.normalized, enemyData.enemyShotPrefabs.shot1Speed);
         }
 

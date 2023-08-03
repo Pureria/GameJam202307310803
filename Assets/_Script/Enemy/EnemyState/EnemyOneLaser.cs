@@ -24,7 +24,7 @@ public class EnemyOneLaser : EnemyState
 
         GameObject laser;
         Vector3 InitPosition = enemy.GetShotPosition(enemy.nowShotPattern.attackType[attackCount].position);
-        laser = enemy.InstantiateAmmo(enemyData.enemyShotPrefabs.Laser2, Quaternion.identity, InitPosition);
+        laser = enemy.Instantiate(enemyData.enemyShotPrefabs.Laser2, Quaternion.identity, InitPosition);
         Vector3 pTran = GameManager.Instance.Player.transform.position;
         if (pTran != null)
         {

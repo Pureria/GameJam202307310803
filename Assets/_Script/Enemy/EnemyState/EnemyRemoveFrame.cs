@@ -26,9 +26,7 @@ public class EnemyRemoveFrame : EnemyState
 
         if (FramePosition.Instance.isChangedScale)
         {
-            enemy.IdleState.SetLockTime(enemy.nowShotPattern.attackType[attackCount].nextStateInterval);
-            enemy.IdleState.AddAtackCount();
-            stateMachine.ChangeState(enemy.IdleState);
+            stateMachine.ChangeState(enemy.AfterRemoveFrameState);
         }
     }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyController : MonoBehaviour
 {
@@ -14,18 +15,26 @@ public class EnemyController : MonoBehaviour
     public EnemyLazerStart LazerShotState { get; private set; }
     public EnemyLazerStop LazerShotStopState { get; private set; }
     public EnemyZoomFrame ZoomFrameState { get; private set; }
-    public EnemyRemoveFrame RemoveFrameState { get; private set; }
     public EnemyOneLaser OneLaserState { get; private set; }
+    public EnemyPlayerSearchShot PlayerSearchShotState { get; private set; }
+    public EnemyDead DeadState { get; private set; }
+    public EnemyEntry EntryState { get; private set; }
+
+    public EnemyPreActionZoomFrame BeforeZoomFrameState { get; private set; }
+    public EnemyAfterActionZoomFrame AfterZoomFrameState { get; private set; }
+    public EnemyRemoveFrame RemoveFrameState { get; private set; }
+    public EnemyBeforeRemoveFrame BeforeRemoveFrameState { get; private set; }
+    public EnemyAfterRemoveFrame AfterRemoveFrameState { get; private set; }
     #endregion
 
     #region Unity Variables
     public Animator _anim { get; private set; }
+    public UnityEvent EntryEvent = new UnityEvent();
+    public UnityEvent DeadEvent = new UnityEvent();
+    public UnityAction DeadAction;
     #endregion
 
     #region Variables
-    [SerializeField]
-    private bool DebugShot = false;
-
     [SerializeField]
     private EnemyData enemyData;
 
@@ -33,6 +42,8 @@ public class EnemyController : MonoBehaviour
     private ShotPos shotPosition;
 
     public EnemyData.EnemyShotPattern nowShotPattern { get; private set; }
+
+    public GameObject enemyHeart;
 
     private Core Core;
     public Damage Damage { get => damage ?? Core.GetCoreComponent(ref damage); }
@@ -54,9 +65,16 @@ public class EnemyController : MonoBehaviour
         Shot2State = new EnemyShot2(this, stateMachine, enemyData, "idle");
         LazerShotState = new EnemyLazerStart(this, stateMachine, enemyData, "idle");
         LazerShotStopState = new EnemyLazerStop(this, stateMachine, enemyData, "idle");
-        ZoomFrameState = new EnemyZoomFrame(this, stateMachine, enemyData, "idle");
-        RemoveFrameState = new EnemyRemoveFrame(this, stateMachine, enemyData, "idle");
         OneLaserState = new EnemyOneLaser(this, stateMachine, enemyData, "idle");
+        PlayerSearchShotState = new EnemyPlayerSearchShot(this, stateMachine, enemyData, "idle");
+        DeadState = new EnemyDead(this, stateMachine, enemyData, "dead");
+        EntryState = new EnemyEntry(this, stateMachine, enemyData, "entry");
+        ZoomFrameState = new EnemyZoomFrame(this, stateMachine, enemyData, "zoomFrame");
+        BeforeZoomFrameState = new EnemyPreActionZoomFrame(this, stateMachine, enemyData, "befZoomFrame");
+        AfterZoomFrameState = new EnemyAfterActionZoomFrame(this, stateMachine, enemyData, "aftZoomFrame");
+        RemoveFrameState = new EnemyRemoveFrame(this, stateMachine, enemyData, "removeFrame");
+        BeforeRemoveFrameState = new EnemyBeforeRemoveFrame(this, stateMachine, enemyData, "befRemoveFrame");
+        AfterRemoveFrameState = new EnemyAfterRemoveFrame(this, stateMachine, enemyData, "aftRemoveFrame");
 
         nowShotPattern = enemyData.shotPattern[0];
         IdleState.SetLockTime(enemyData.EnemyShotInterval);
@@ -72,20 +90,11 @@ public class EnemyController : MonoBehaviour
 
         Status?.Initialize(enemyData.EnemyHP);
         uiController.Initialize(enemyData.EnemyHP);
-        stateMachine.Initialize(IdleState);
+        stateMachine.Initialize(EntryState);
     }
 
     private void Update()
     {
-        if(DebugShot)
-        {
-            DebugShot = false;
-
-            workspace = GameManager.Instance.Player.transform.position - this.transform.position;
-            GameObject shot = Instantiate(enemyData.enemyShotPrefabs.Shot1, transform.position, Quaternion.identity);
-            shot.GetComponent<EnemyShotMove>().SetDirection(workspace.normalized, enemyData.enemyShotPrefabs.shot1Speed);
-        }
-
         if(Damage.isDamage)
         {
             Damage?.UseDamageFlg();
@@ -105,6 +114,14 @@ public class EnemyController : MonoBehaviour
         stateMachine.LogicUpdate();
         uiController.UpdateHPSlider(Status.GetNowHP(),Damage.damageTime);
 
+        float nowHp = Status.GetNowHP();
+        if(nowHp <= 0 && stateMachine.currentState != DeadState)
+        {
+            EnemyLazer.DelLaserObj();
+            FramePosition.Instance.ResetScale();
+            stateMachine.ChangeState(DeadState);
+        }
+
         //デバッグ用
         if(Input.GetKey(KeyCode.UpArrow))
         {
@@ -119,7 +136,10 @@ public class EnemyController : MonoBehaviour
     #endregion
 
     #region Other Function
-    public GameObject InstantiateAmmo(GameObject ammoObj, Quaternion rotation,Vector3 pos)
+    public void AnimationFinishedTrigger() { stateMachine.currentState.AnimationFinishedTrigger(); }
+    public void AnimationTrigger() { stateMachine.currentState.AnimationTrigger(); }
+
+    public GameObject Instantiate(GameObject ammoObj, Quaternion rotation,Vector3 pos)
     {
         GameObject ret = null;
         ret = Instantiate(ammoObj, pos, rotation);
@@ -128,19 +148,6 @@ public class EnemyController : MonoBehaviour
 
     public void CheckAttackPattern()
     {
-        /*
-        int cnt = enemyData.shotPattern.Count - 1;
-        float current = enemyData.EnemyHP / cnt;
-        int num = (int)(Status.GetNowHP() / current);
-        EnemyData.EnemyShotPattern old = nowShotPattern;
-        nowShotPattern = enemyData.shotPattern[cnt - num];
-
-        if(old != nowShotPattern)
-        {
-            Debug.Log("パターン変更");
-        }
-        */
-
         EnemyData.EnemyShotPattern old = nowShotPattern;
 
         int cnt = enemyData.shotPattern.Count;
@@ -170,13 +177,36 @@ public class EnemyController : MonoBehaviour
             case EnemyData.AttackPosition.PositionTop:
                 ret = shotPosition.ShotPositionTop.position;
                 break;
+
+            case EnemyData.AttackPosition.PositionTopLeft:
+                ret = shotPosition.ShotPositionTopLeft.position;
+                break;
+
+            case EnemyData.AttackPosition.PositionTopRight:
+                ret = shotPosition.ShotPositionTopRight.position;
+                break;
+
             case EnemyData.AttackPosition.PositionLeft:
                 ret = shotPosition.ShotPositionLeft.position;
                 break;
+
             case EnemyData.AttackPosition.PositionRight:
                 ret = shotPosition.ShotPositionRight.position;
                 break;
+
+            case EnemyData.AttackPosition.PositionBottom:
+                ret = shotPosition.ShotPositionBottom.position;
+                break;
+
+            case EnemyData.AttackPosition.PositionBottomLeft:
+                ret = shotPosition.ShotPositionBottomLeft.position;
+                break;
+
+            case EnemyData.AttackPosition.PositionBottomRight:
+                ret = shotPosition.ShotPositionBottomRight.position;
+                break;
             default:
+                ret = shotPosition.ShotPositionTop.position;
                 break;
         }
         return ret;
@@ -188,6 +218,11 @@ public class EnemyController : MonoBehaviour
 public class ShotPos
 {
     public Transform ShotPositionTop;
+    public Transform ShotPositionTopLeft;
+    public Transform ShotPositionTopRight;
     public Transform ShotPositionLeft;
     public Transform ShotPositionRight;
+    public Transform ShotPositionBottom;
+    public Transform ShotPositionBottomLeft;
+    public Transform ShotPositionBottomRight;
 }
