@@ -24,7 +24,8 @@ public class EnemyEntry : EnemyState
         if (isAnimationFinished)
         {
             enemy.EntryEvent.Invoke();
-            enemy.enemyHeartprefab = enemy.Instantiate(enemyData.EnemyHeart, Quaternion.identity, enemyData.enemyHeartPosition);
+            if(enemyData.SpawnEnemyHeart)
+                enemy.enemyHeartprefab = enemy.Instantiate(enemyData.EnemyHeart, Quaternion.identity, enemyData.enemyHeartPosition);
             stateMachine.ChangeState(enemy.IdleState);
         }
     }

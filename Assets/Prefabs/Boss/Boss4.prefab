@@ -1870,7 +1870,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  enemyData: {fileID: 11400000, guid: 3c20e1e3d40f982499f105ab3c3df6ba, type: 2}
+  enemyData: {fileID: 11400000, guid: e6f4440225be3774ebd921f02b36e7fe, type: 2}
   shotPosition:
     ShotPositionTop: {fileID: 6030574004811981307}
     ShotPositionTopLeft: {fileID: 6030574005465257273}
