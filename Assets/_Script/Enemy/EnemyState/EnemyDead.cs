@@ -26,6 +26,10 @@ public class EnemyDead : EnemyState
             enemy.DeadEvent.Invoke();
             enemy.DeadAction?.Invoke();
             enemy.GameEnd();
+
+            var player = GameManager.Instance.Player;
+            var health = player.GetComponent<GJ.Health.HealthTime>();
+            health.Heal();
         }
     }
 

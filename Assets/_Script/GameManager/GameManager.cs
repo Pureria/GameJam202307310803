@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     private float MaxTime = 60.0f;
     [SerializeField]
     private TextMeshProUGUI GameTimeText;
+    [SerializeField] UnityEvent gameStart;
     [SerializeField] UnityEvent gameClearEvent;
     [SerializeField] UnityEvent gameOverEvent;
 
@@ -78,6 +79,7 @@ public class GameManager : MonoBehaviour
     {
         Player.gameObject.SetActive(true);
         Player.Initialize();
+        this.gameStart.Invoke();
 
         BossManager.Instance?.Initialize();
         BossManager.Instance?.InstantiateNextBoss();

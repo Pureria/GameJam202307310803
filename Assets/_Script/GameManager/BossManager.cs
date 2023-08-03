@@ -12,7 +12,14 @@ public class BossManager : MonoBehaviour
 
     private GameObject nowBoss;
 
+    
     private int nowBossCount;
+
+    public int NowBossCount
+    {
+        get { return this.nowBossCount; }
+    }
+
 
     private void Awake()
     {
@@ -59,7 +66,8 @@ public class BossManager : MonoBehaviour
         if (ec != null)
             ec.DeadAction = () =>
             {
-               InstantiateNextBoss();
+                InstantiateNextBoss();
+                GJ.BossBGManager.Instance.OnBossKilled();
             };
     }
     private void LastBossInitialize(GameObject boss)
@@ -70,6 +78,7 @@ public class BossManager : MonoBehaviour
             ec.DeadAction = () =>
             {
                 GameManager.Instance?.GameClear();
+                GJ.BossBGManager.Instance.OnBossKilled();
             };
     }
 }

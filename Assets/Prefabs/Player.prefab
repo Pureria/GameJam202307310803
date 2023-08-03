@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 1477088401513651323}
   - component: {fileID: 1477088401513651327}
   - component: {fileID: 1477088401513651326}
+  - component: {fileID: 3425782139157860886}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -244,6 +245,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 782ef331059ac6240874e6820e35657d, type: 2}
   damageParticle: {fileID: 8504047317747260549}
+  OnPlayerDamage:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3425782139157860886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477088401513651321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec429f20d942c89489d073a707f0d578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialHealth: 60
+  roundhealTime: 20
+  damageTime: 2
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  health: 0
 --- !u!1 &1477088401663688102
 GameObject:
   m_ObjectHideFlags: 0

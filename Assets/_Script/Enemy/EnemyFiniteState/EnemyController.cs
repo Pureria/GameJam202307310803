@@ -25,6 +25,8 @@ public class EnemyController : MonoBehaviour
     public EnemyRemoveFrame RemoveFrameState { get; private set; }
     public EnemyBeforeRemoveFrame BeforeRemoveFrameState { get; private set; }
     public EnemyAfterRemoveFrame AfterRemoveFrameState { get; private set; }
+
+    
     #endregion
 
     #region Unity Variables
@@ -95,6 +97,7 @@ public class EnemyController : MonoBehaviour
         uiController.Initialize(enemyData.EnemyHP);
         stateMachine.Initialize(EntryState);
     }
+
 
     private void Update()
     {
