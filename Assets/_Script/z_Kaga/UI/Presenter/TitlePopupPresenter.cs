@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using GJ.Ranking;
@@ -12,12 +10,31 @@ namespace GJ.UI.Presenter
         [SerializeField] private Button startButton;
         [SerializeField] private Button rankingButton;
         [SerializeField] private Button exitButton;
+		[SerializeField] private Timer timer;
 		[SerializeField] private ShowHide rankingModalShowHide;
 
 
 		private void Awake()
 		{
+			this.ConnectTimer();
 			this.ConnectRankingModal();
+			this.ConnectApplicationExit();
+		}
+
+
+		private void ConnectTimer()
+		{
+			this.startButton.onClick.AddListener(
+				this.timer.StartTimer
+			);
+		}
+
+
+		private void ConnectApplicationExit()
+		{
+			this.exitButton.onClick.AddListener(
+				Application.Quit
+			);
 		}
 
 
