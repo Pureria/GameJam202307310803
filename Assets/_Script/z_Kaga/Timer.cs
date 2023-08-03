@@ -41,5 +41,12 @@ namespace GJ
         {
             this.isCount = false;
         }
-    }
+
+
+		public void ResetTimer()
+		{
+            this.time = 0f;
+            this.isCount = false;
+		}
+	}
 }

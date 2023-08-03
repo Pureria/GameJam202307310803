@@ -7166,6 +7166,62 @@ PrefabInstance:
       propertyPath: GameTimeText
       value: 
       objectReference: {fileID: 536560351}
+    - target: {fileID: 786141865554534092, guid: 50e0735ac2005fa4085db498c98c773f, type: 3}
+      propertyPath: gameOverEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 786141865554534092, guid: 50e0735ac2005fa4085db498c98c773f, type: 3}
+      propertyPath: gameClearEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 786141865554534092, guid: 50e0735ac2005fa4085db498c98c773f, type: 3}
+      propertyPath: gameOverEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 786141865554534092, guid: 50e0735ac2005fa4085db498c98c773f, type: 3}
+      propertyPath: gameClearEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 786141865554534092, guid: 50e0735ac2005fa4085db498c98c773f, type: 3}
+      propertyPath: gameOverEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 717018134}
+    - target: {fileID: 786141865554534092, guid: 50e0735ac2005fa4085db498c98c773f, type: 3}
+      propertyPath: gameClearEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 717018134}
+    - target: {fileID: 786141865554534092, guid: 50e0735ac2005fa4085db498c98c773f, type: 3}
+      propertyPath: gameOverEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 786141865554534092, guid: 50e0735ac2005fa4085db498c98c773f, type: 3}
+      propertyPath: gameClearEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 786141865554534092, guid: 50e0735ac2005fa4085db498c98c773f, type: 3}
+      propertyPath: gameOverEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetTimer
+      objectReference: {fileID: 0}
+    - target: {fileID: 786141865554534092, guid: 50e0735ac2005fa4085db498c98c773f, type: 3}
+      propertyPath: gameClearEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StopTimer
+      objectReference: {fileID: 0}
+    - target: {fileID: 786141865554534092, guid: 50e0735ac2005fa4085db498c98c773f, type: 3}
+      propertyPath: gameOverEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GJ.Timer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 786141865554534092, guid: 50e0735ac2005fa4085db498c98c773f, type: 3}
+      propertyPath: gameClearEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GJ.Timer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 786141865554534092, guid: 50e0735ac2005fa4085db498c98c773f, type: 3}
+      propertyPath: gameOverEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 786141865554534092, guid: 50e0735ac2005fa4085db498c98c773f, type: 3}
+      propertyPath: gameClearEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 786141865554534093, guid: 50e0735ac2005fa4085db498c98c773f, type: 3}
       propertyPath: m_RootOrder
       value: 2

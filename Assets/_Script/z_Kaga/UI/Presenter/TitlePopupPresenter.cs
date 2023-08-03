@@ -8,6 +8,7 @@ namespace GJ.UI.Presenter
 {
     public class TitlePopupPresenter : MonoBehaviour
     {
+		[SerializeField] private GameManager gameMamager;
         [SerializeField] private Button startButton;
         [SerializeField] private Button rankingButton;
         [SerializeField] private Button exitButton;
@@ -22,6 +23,7 @@ namespace GJ.UI.Presenter
 
 		private void Awake()
 		{
+			this.ConnectGameManager();
 			this.ConnectTimer();
 			this.ConnectRankingModal();
 			this.ConnectApplicationExit();
@@ -82,6 +84,14 @@ namespace GJ.UI.Presenter
 		{
 			this.soundSlider.onValueChanged.AddListener(
 				(value)=> { this.audioMixer.SetFloat("SE", value); }
+			);
+		}
+
+
+		private void ConnectGameManager()
+		{
+			this.startButton.onClick.AddListener(
+				this.gameMamager.GameStart
 			);
 		}
 	}
