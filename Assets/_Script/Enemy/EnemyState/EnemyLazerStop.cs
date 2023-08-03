@@ -11,7 +11,7 @@ public class EnemyLazerStop : EnemyLazer
     {
         base.Enter();
 
-        FramePosition.Instance.ResetScale();
+        //FramePosition.Instance.ResetScale();
         foreach(GameObject lazer in lazerObj)
         {
             GameObject.Destroy(lazer);

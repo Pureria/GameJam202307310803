@@ -83,6 +83,8 @@ public class GameManager : MonoBehaviour
 
         BossManager.Instance?.Initialize();
         BossManager.Instance?.InstantiateNextBoss();
+
+        FramePosition.Instance.ShowFrame();
     }
 
     private void GameRestart()
@@ -95,6 +97,7 @@ public class GameManager : MonoBehaviour
     {
         Player.gameObject.SetActive(false);
         BossManager.Instance?.GameEnd();
+        FramePosition.Instance.HideFrame();
     }
 
     #region Set Function
@@ -110,6 +113,7 @@ public class GameManager : MonoBehaviour
     {
         //ゲームスタート処理
         isNowGame = true;
+        Debug.Log("ゲームスタート");
         GameInitialize();
     }
 
@@ -117,6 +121,7 @@ public class GameManager : MonoBehaviour
     {
         //ゲームクリア時処理
         gameClearEvent.Invoke();
+        Debug.Log("ゲームクリア");
         GameEnd();
     }
 
@@ -124,6 +129,7 @@ public class GameManager : MonoBehaviour
     {
         //ゲームオーバー時処理
         gameOverEvent.Invoke();
+        Debug.Log("ゲームオーバー");
         GameEnd();
     }
 
@@ -131,6 +137,7 @@ public class GameManager : MonoBehaviour
     {
         //リスタート処理
         isNowGame = true;
+        Debug.Log("リスタート");
         GameRestart();
     }
     #endregion

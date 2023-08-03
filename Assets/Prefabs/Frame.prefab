@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -135,3 +135,4 @@ MonoBehaviour:
   spriteTransform: {fileID: 5339987200690232655}
   quakeMaxCount: 10
   quakePower: 0.8
+  sprite: {fileID: 5339987200690232640}

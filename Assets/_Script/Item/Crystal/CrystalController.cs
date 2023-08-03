@@ -21,13 +21,6 @@ public class CrystalController : MonoBehaviour
 
     private void Update()
     {
-        workspace = targetPosition - transform.position;
-        Movement?.SetVelocity(workspace.normalized, crystalData.CrystalSpeed);
-
-        workspace = targetPosition - transform.position;
-        if (Mathf.Abs(workspace.x) < crystalData.CrystalMoveDeadZone && Mathf.Abs(workspace.y) < crystalData.CrystalMoveDeadZone)
-            targetPosition = moveRandomPosition();
-
         //TargetPositionのチェック
         if (!CheckFrameLeftPosition(targetPosition.x))
         {
@@ -65,6 +58,16 @@ public class CrystalController : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, FramePosition.BottomPosition, 0.0f);
         }
+    }
+
+    private void FixedUpdate()
+    {
+        workspace = targetPosition - transform.position;
+        Movement?.SetVelocity(workspace.normalized, crystalData.CrystalSpeed);
+
+        workspace = targetPosition - transform.position;
+        if (Mathf.Abs(workspace.x) < crystalData.CrystalMoveDeadZone && Mathf.Abs(workspace.y) < crystalData.CrystalMoveDeadZone)
+            targetPosition = moveRandomPosition();
     }
 
     private Vector3 moveRandomPosition()  // 目的地を生成、xとyのポジションをランダムに値を取得 
