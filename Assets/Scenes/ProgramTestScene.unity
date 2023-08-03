@@ -941,19 +941,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 880332229774825937, guid: d91dd2065b96fab45b82288d53d40212, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 880332229774825937, guid: d91dd2065b96fab45b82288d53d40212, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6030574005356180241, guid: d91dd2065b96fab45b82288d53d40212, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6030574005356180241, guid: d91dd2065b96fab45b82288d53d40212, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7110723132625608120, guid: d91dd2065b96fab45b82288d53d40212, type: 3}
       propertyPath: m_RootOrder
@@ -1005,7 +1005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7110723132625608123, guid: d91dd2065b96fab45b82288d53d40212, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d91dd2065b96fab45b82288d53d40212, type: 3}
@@ -1079,7 +1079,11 @@ PrefabInstance:
     - target: {fileID: 4179177748719391149, guid: 14bf145b8d67b0e43bbb14e7bdd0e3f7, type: 3}
       propertyPath: BossPrefab.Array.data[3]
       value: 
-      objectReference: {fileID: 3539470972643504424, guid: 23f8e45246fd497408d647246c335209, type: 3}
+      objectReference: {fileID: 7110723132625608123, guid: d91dd2065b96fab45b82288d53d40212, type: 3}
+    - target: {fileID: 4179177748719391149, guid: 14bf145b8d67b0e43bbb14e7bdd0e3f7, type: 3}
+      propertyPath: BossPrefab.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4179177748719391150, guid: 14bf145b8d67b0e43bbb14e7bdd0e3f7, type: 3}
       propertyPath: m_Name
       value: BossManager

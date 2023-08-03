@@ -17,6 +17,8 @@ public class EnemyData : ScriptableObject
     [Header("Enemy Heart")]
     public GameObject EnemyHeart;
     public Vector3 enemyHeartPosition;
+    public bool SpawnEnemyHeart = true;
+    public float RunAwayTime = 30.0f;
 
     [Header("Enemy Shot Object")]
     [Tooltip("ShotPrefabsê›íË")]

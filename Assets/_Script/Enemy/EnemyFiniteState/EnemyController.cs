@@ -54,6 +54,7 @@ public class EnemyController : MonoBehaviour
     private Status status;
     private bool nowInvincible;
     private EnemyUIController uiController;
+    private float startTime;
     private Vector3 workspace;
     #endregion
 
@@ -79,6 +80,7 @@ public class EnemyController : MonoBehaviour
 
         nowShotPattern = enemyData.shotPattern[0];
         IdleState.SetLockTime(enemyData.EnemyShotInterval);
+        startTime = Time.time;
     }
 
     private void Start()
@@ -127,6 +129,15 @@ public class EnemyController : MonoBehaviour
         if(Input.GetKey(KeyCode.UpArrow))
         {
             Damage?.AddDamage(5.0f);
+        }
+
+        if(!enemyData.SpawnEnemyHeart)
+        {
+            if(startTime + enemyData.RunAwayTime < Time.time)
+            {
+                //ƒvƒŒƒCƒ„[‚ª“¦‚°Ø‚Á‚½ˆ—
+                Damage?.AddDamage(enemyData.EnemyHP);
+            }
         }
     }
 
