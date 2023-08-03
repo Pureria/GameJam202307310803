@@ -1067,11 +1067,11 @@ PrefabInstance:
     - target: {fileID: 4179177748719391149, guid: 14bf145b8d67b0e43bbb14e7bdd0e3f7, type: 3}
       propertyPath: BossPrefab.Array.data[0]
       value: 
-      objectReference: {fileID: 5425254314376679603, guid: 3154eacaec29d42449daf9218401a979, type: 3}
+      objectReference: {fileID: 1870810879994821218, guid: c0eb1913dc3cd544cb20d094e9d7e513, type: 3}
     - target: {fileID: 4179177748719391149, guid: 14bf145b8d67b0e43bbb14e7bdd0e3f7, type: 3}
       propertyPath: BossPrefab.Array.data[1]
       value: 
-      objectReference: {fileID: 1870810879994821218, guid: c0eb1913dc3cd544cb20d094e9d7e513, type: 3}
+      objectReference: {fileID: 5425254314376679603, guid: 3154eacaec29d42449daf9218401a979, type: 3}
     - target: {fileID: 4179177748719391149, guid: 14bf145b8d67b0e43bbb14e7bdd0e3f7, type: 3}
       propertyPath: BossPrefab.Array.data[2]
       value: 
