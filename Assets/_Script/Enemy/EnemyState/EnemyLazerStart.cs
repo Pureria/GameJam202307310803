@@ -29,7 +29,7 @@ public class EnemyLazerStart : EnemyLazer
             GameObject lazer;
             Debug.Log("ƒtƒŒ[ƒ€Šg‘åI—¹");
             Vector3 InitPosition = enemy.GetShotPosition(enemy.nowShotPattern.attackType[attackCount].position);
-            lazer = enemy.InstantiateAmmo(enemyData.enemyShotPrefabs.Laser1, Quaternion.identity, InitPosition);
+            lazer = enemy.Instantiate(enemyData.enemyShotPrefabs.Laser1, Quaternion.identity, InitPosition);
             lazer.transform.rotation = enemyData.enemyShotPrefabs.Laser1.transform.rotation;
             lazerObj.Add(lazer);
             

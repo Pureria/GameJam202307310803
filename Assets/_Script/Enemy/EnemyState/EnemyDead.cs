@@ -24,6 +24,7 @@ public class EnemyDead : EnemyState
         if(isAnimationFinished)
         {
             enemy.DeadEvent.Invoke();
+            enemy.DeadAction?.Invoke();
             GameObject.Destroy(enemy.enemyHeart);
             GameObject.Destroy(enemy.gameObject);
         }

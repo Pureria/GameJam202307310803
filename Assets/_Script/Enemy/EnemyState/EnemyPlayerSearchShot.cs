@@ -23,7 +23,7 @@ public class EnemyPlayerSearchShot : EnemyState
         int attackCount = enemy.IdleState.attackCount;
 
         workspace = GameManager.Instance.Player.transform.position;
-        GameObject shot = enemy.InstantiateAmmo(enemyData.enemyShotPrefabs.SearchShot, Quaternion.identity, workspace);
+        GameObject shot = enemy.Instantiate(enemyData.enemyShotPrefabs.SearchShot, Quaternion.identity, workspace);
 
         enemy.IdleState.SetLockTime(enemy.nowShotPattern.attackType[attackCount].nextStateInterval);
         enemy.IdleState.AddAtackCount();

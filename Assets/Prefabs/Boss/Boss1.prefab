@@ -1029,7 +1029,7 @@ MonoBehaviour:
     ShotPositionBottom: {fileID: 1103001892549197446}
     ShotPositionBottomLeft: {fileID: 9026975911501372835}
     ShotPositionBottomRight: {fileID: 5644695788176871813}
-  enemyHeart: {fileID: 0}
+  enemyHeart: {fileID: 8277036787151059193, guid: 07d55049c4b8bb64d991fe71805c22ac, type: 3}
 --- !u!1 &3539470972685469713
 GameObject:
   m_ObjectHideFlags: 0

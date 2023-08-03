@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour
     public Animator _anim { get; private set; }
     public UnityEvent EntryEvent = new UnityEvent();
     public UnityEvent DeadEvent = new UnityEvent();
+    public UnityAction DeadAction;
     #endregion
 
     #region Variables
@@ -129,7 +130,7 @@ public class EnemyController : MonoBehaviour
     public void AnimationFinishedTrigger() { stateMachine.currentState.AnimationFinishedTrigger(); }
     public void AnimationTrigger() { stateMachine.currentState.AnimationTrigger(); }
 
-    public GameObject InstantiateAmmo(GameObject ammoObj, Quaternion rotation,Vector3 pos)
+    public GameObject Instantiate(GameObject ammoObj, Quaternion rotation,Vector3 pos)
     {
         GameObject ret = null;
         ret = Instantiate(ammoObj, pos, rotation);
