@@ -15,11 +15,16 @@ public class EnemyController : MonoBehaviour
     public EnemyLazerStart LazerShotState { get; private set; }
     public EnemyLazerStop LazerShotStopState { get; private set; }
     public EnemyZoomFrame ZoomFrameState { get; private set; }
-    public EnemyRemoveFrame RemoveFrameState { get; private set; }
     public EnemyOneLaser OneLaserState { get; private set; }
     public EnemyPlayerSearchShot PlayerSearchShotState { get; private set; }
     public EnemyDead DeadState { get; private set; }
     public EnemyEntry EntryState { get; private set; }
+
+    public EnemyPreActionZoomFrame BeforeZoomFrameState { get; private set; }
+    public EnemyAfterActionZoomFrame AfterZoomFrameState { get; private set; }
+    public EnemyRemoveFrame RemoveFrameState { get; private set; }
+    public EnemyBeforeRemoveFrame BeforeRemoveFrameState { get; private set; }
+    public EnemyAfterRemoveFrame AfterRemoveFrameState { get; private set; }
     #endregion
 
     #region Unity Variables
@@ -60,12 +65,16 @@ public class EnemyController : MonoBehaviour
         Shot2State = new EnemyShot2(this, stateMachine, enemyData, "idle");
         LazerShotState = new EnemyLazerStart(this, stateMachine, enemyData, "idle");
         LazerShotStopState = new EnemyLazerStop(this, stateMachine, enemyData, "idle");
-        ZoomFrameState = new EnemyZoomFrame(this, stateMachine, enemyData, "idle");
-        RemoveFrameState = new EnemyRemoveFrame(this, stateMachine, enemyData, "idle");
         OneLaserState = new EnemyOneLaser(this, stateMachine, enemyData, "idle");
         PlayerSearchShotState = new EnemyPlayerSearchShot(this, stateMachine, enemyData, "idle");
         DeadState = new EnemyDead(this, stateMachine, enemyData, "dead");
         EntryState = new EnemyEntry(this, stateMachine, enemyData, "entry");
+        ZoomFrameState = new EnemyZoomFrame(this, stateMachine, enemyData, "zoomFrame");
+        BeforeZoomFrameState = new EnemyPreActionZoomFrame(this, stateMachine, enemyData, "befZoomFrame");
+        AfterZoomFrameState = new EnemyAfterActionZoomFrame(this, stateMachine, enemyData, "aftZoomFrame");
+        RemoveFrameState = new EnemyRemoveFrame(this, stateMachine, enemyData, "removeFrame");
+        BeforeRemoveFrameState = new EnemyBeforeRemoveFrame(this, stateMachine, enemyData, "befRemoveFrame");
+        AfterRemoveFrameState = new EnemyAfterRemoveFrame(this, stateMachine, enemyData, "aftRemoveFrame");
 
         nowShotPattern = enemyData.shotPattern[0];
         IdleState.SetLockTime(enemyData.EnemyShotInterval);

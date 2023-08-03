@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyRemoveFrame : EnemyState
+public class EnemyBeforeRemoveFrame : EnemyState
 {
-    public EnemyRemoveFrame(EnemyController enemy, EnemyStateMachine stateMachine, EnemyData enemyData, string animBoolName) : base(enemy, stateMachine, enemyData, animBoolName)
+    public EnemyBeforeRemoveFrame(EnemyController enemy, EnemyStateMachine stateMachine, EnemyData enemyData, string animBoolName) : base(enemy, stateMachine, enemyData, animBoolName)
     { }
 
     public override void Enter()
     {
         base.Enter();
-
-        FramePosition.Instance.ResetScale();
     }
 
     public override void Exit()
@@ -22,11 +20,10 @@ public class EnemyRemoveFrame : EnemyState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        int attackCount = enemy.IdleState.attackCount;
 
-        if (FramePosition.Instance.isChangedScale)
+        if (isAnimationFinished)
         {
-            stateMachine.ChangeState(enemy.AfterRemoveFrameState);
+            stateMachine.ChangeState(enemy.RemoveFrameState);
         }
     }
 
