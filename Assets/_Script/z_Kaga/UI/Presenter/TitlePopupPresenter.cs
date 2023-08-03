@@ -16,9 +16,9 @@ namespace GJ.UI.Presenter
 		[SerializeField] private Timer timer;
 		[SerializeField] private ShowHide rankingModalShowHide;
 
-		[Space]
-		[SerializeField] private AudioMixer audioMixer;
-		[SerializeField] private AudioSource buttonPushSound;
+		//[Space]
+		//[SerializeField] private AudioMixer audioMixer;
+		//[SerializeField] private AudioSource buttonPushSound;
 
 
 		private void Awake()
@@ -64,27 +64,27 @@ namespace GJ.UI.Presenter
 
 		private void ConnectAudioSource()
 		{
-			this.startButton.onClick.AddListener(
-				this.buttonPushSound.Play
-			);
+			//this.startButton.onClick.AddListener(
+			//	this.buttonPushSound.Play
+			//);
 
 
-			this.rankingButton.onClick.AddListener(
-				this.buttonPushSound.Play
-			);
+			//this.rankingButton.onClick.AddListener(
+			//	this.buttonPushSound.Play
+			//);
 
 
-			this.exitButton.onClick.AddListener(
-				this.buttonPushSound.Play
-			);
+			//this.exitButton.onClick.AddListener(
+			//	this.buttonPushSound.Play
+			//);
 		}
 
 
 		private void ConnectAudioMixer()
 		{
-			this.soundSlider.onValueChanged.AddListener(
-				(value)=> { this.audioMixer.SetFloat("SE", value); }
-			);
+			//this.soundSlider.onValueChanged.AddListener(
+			//	(value)=> { this.audioMixer.SetFloat("SE", value); }
+			//);
 		}
 
 
