@@ -215,6 +215,8 @@ public class EnemyController : MonoBehaviour
 
     public void GameEnd()
     {
+        EnemyLazer.DelLaserObj();
+        FramePosition.Instance.ResetScale();
         GameObject.Destroy(enemyHeartprefab);
         GameObject.Destroy(gameObject);
     }
