@@ -11,7 +11,7 @@ public class EnemyLazerStart : EnemyLazer
     {
         base.Enter();
 
-        FramePosition.Instance.ChangeScale(enemyData.EnemyFrameScale.x, enemyData.EnemyFrameScale.y);
+        //FramePosition.Instance.ChangeScale(enemyData.EnemyFrameScale.x, enemyData.EnemyFrameScale.y);
     }
 
     public override void Exit()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Variables
+    [SerializeField] UnityEvent OnPlayerDamage;
     public Animator _anim { get; private set; }
 
     public Core Core { get; private set; }
@@ -73,6 +75,7 @@ public class PlayerController : MonoBehaviour
         //TODO::É_ÉÅÅ[ÉWîªíË
         if(Status.isDead && stateMachine.currentState != DeadState)
         {
+            OnPlayerDamage.Invoke();
             damageParticle.PlayParticle();
             FramePosition.Instance?.SetQuake();
             stateMachine.ChangeState(DeadState);
