@@ -80,11 +80,11 @@ public class EnemyIdle : EnemyState
                 break;
 
             case EnemyData.AttackType.ZoomFrame:
-                stateMachine.ChangeState(enemy.ZoomFrameState);
+                stateMachine.ChangeState(enemy.BeforeZoomFrameState);
                 break;
 
             case EnemyData.AttackType.RemoveFrame:
-                stateMachine.ChangeState(enemy.RemoveFrameState);
+                stateMachine.ChangeState(enemy.BeforeRemoveFrameState);
                 break;
 
             case EnemyData.AttackType.OneShotLaser:

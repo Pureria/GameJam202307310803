@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyEntry : EnemyState
+public class EnemyAfterActionZoomFrame : EnemyState
 {
-    public EnemyEntry(EnemyController enemy, EnemyStateMachine stateMachine, EnemyData enemyData, string animBoolName) : base(enemy, stateMachine, enemyData, animBoolName)
+    public EnemyAfterActionZoomFrame(EnemyController enemy, EnemyStateMachine stateMachine, EnemyData enemyData, string animBoolName) : base(enemy, stateMachine, enemyData, animBoolName)
     { }
 
     public override void Enter()
@@ -23,8 +23,9 @@ public class EnemyEntry : EnemyState
 
         if (isAnimationFinished)
         {
-            enemy.EntryEvent.Invoke();
-            enemy.enemyHeartprefab = enemy.Instantiate(enemyData.EnemyHeart, Quaternion.identity, enemyData.enemyHeartPosition);
+            int attackCount = enemy.IdleState.attackCount;
+            enemy.IdleState.SetLockTime(enemy.nowShotPattern.attackType[attackCount].nextStateInterval);
+            enemy.IdleState.AddAtackCount();
             stateMachine.ChangeState(enemy.IdleState);
         }
     }

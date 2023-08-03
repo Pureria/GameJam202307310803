@@ -2,7 +2,7 @@
     "name": "PlayerInput",
     "maps": [
         {
-            "name": "Mouse",
+            "name": "Mouse & Keyboard",
             "id": "c52fd4b6-fc83-4dfb-9b5f-c5a55a844bc4",
             "actions": [
                 {
@@ -13,6 +13,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Restart",
+                    "type": "Button",
+                    "id": "24c2f23e-7a85-4e7e-a4ea-67b889c39369",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Title",
+                    "type": "Button",
+                    "id": "86849bb0-9ef0-4c4a-9399-b9258134549c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -24,6 +42,28 @@
                     "processors": "",
                     "groups": "keyboard & mouse",
                     "action": "Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3a03aa40-83fe-4fc9-96a9-382dc651cff3",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "keyboard & mouse",
+                    "action": "Restart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "44c26b0d-4f32-4ff0-ad6b-3afef7c40961",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "keyboard & mouse",
+                    "action": "Title",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

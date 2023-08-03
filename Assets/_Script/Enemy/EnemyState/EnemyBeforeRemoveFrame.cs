@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyEntry : EnemyState
+public class EnemyBeforeRemoveFrame : EnemyState
 {
-    public EnemyEntry(EnemyController enemy, EnemyStateMachine stateMachine, EnemyData enemyData, string animBoolName) : base(enemy, stateMachine, enemyData, animBoolName)
+    public EnemyBeforeRemoveFrame(EnemyController enemy, EnemyStateMachine stateMachine, EnemyData enemyData, string animBoolName) : base(enemy, stateMachine, enemyData, animBoolName)
     { }
 
     public override void Enter()
@@ -23,9 +23,7 @@ public class EnemyEntry : EnemyState
 
         if (isAnimationFinished)
         {
-            enemy.EntryEvent.Invoke();
-            enemy.enemyHeartprefab = enemy.Instantiate(enemyData.EnemyHeart, Quaternion.identity, enemyData.enemyHeartPosition);
-            stateMachine.ChangeState(enemy.IdleState);
+            stateMachine.ChangeState(enemy.RemoveFrameState);
         }
     }
 

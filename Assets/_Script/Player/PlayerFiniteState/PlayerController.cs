@@ -46,11 +46,9 @@ public class PlayerController : MonoBehaviour
        // GameManager.Instance?.SetPlayer(this.gameObject);
         _anim = GetComponent<Animator>();
         Core = GetComponentInChildren<Core>();
-        inputHandler = GetComponent<PlayerInputHandler>();
+        inputHandler = InputManager.Instance.GetPlayerInput();
 
-        Status?.Initialize(1.0f);
-        //stateMachine‚Ì‰Šú‰»ˆ—
-        stateMachine.Initialize(MoveState);
+        Initialize();
     }
 
     private void Update()
@@ -131,5 +129,12 @@ public class PlayerController : MonoBehaviour
     }
 
     public PlayerData GetPlayerData() { return playerData; }
+
+    public void Initialize()
+    {
+        Status?.Initialize(1.0f);
+        //stateMachine‚Ì‰Šú‰»ˆ—
+        stateMachine.Initialize(MoveState);
+    }
     #endregion
 }

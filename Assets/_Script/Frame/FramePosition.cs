@@ -35,9 +35,8 @@ public class FramePosition : MonoBehaviour
     private Vector3 spriteDefPos;
     private Vector3 reChangeScale;
     private Vector3 currentScale;
+    private Vector3 defScale;
     private Vector3 workspace;
-
-    private Transform defTran;
     private void Awake()
     {
         if (Instance == null)
@@ -47,7 +46,7 @@ public class FramePosition : MonoBehaviour
     }
     private void Start()
     {
-        defTran = transform;
+        defScale = transform.localScale;
         isChangedScale = true;
         spriteDefPos = spriteTransform.position;
         SetPosition();
@@ -121,13 +120,13 @@ public class FramePosition : MonoBehaviour
 
     public void ResetScale()
     {
-        if (transform.localScale == defTran.localScale)
+        if (transform.localScale == defScale)
             return;
 
         nowChangeScaleTime = 0.0f;
         isChangedScale = false;
         reChangeScale = transform.localScale;
-        currentScale = defTran.localScale;
+        currentScale = defScale;
     }
 
     public void SetQuake()

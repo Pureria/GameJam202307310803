@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,9 +14,11 @@ public class GameManager : MonoBehaviour
     private float MaxTime = 60.0f;
     [SerializeField]
     private TextMeshProUGUI GameTimeText;
+    [SerializeField] UnityEvent gameClearEvent;
+    [SerializeField] UnityEvent gameOverEvent;
 
     public static GameManager Instance;
-    public GameObject Player;
+    public PlayerController Player;
     public GameObject Enemy { get; private set; }
 
     public bool isNowGame { get; private set; }
@@ -70,11 +73,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    #region Set Function
-    public void SetPlayer(GameObject player)
+    //初期化処理
+    private void GameInitialize()
     {
-        this.Player = player;
+        Player.gameObject.SetActive(true);
+        Player.Initialize();
+
+        BossManager.Instance?.Initialize();
+        BossManager.Instance?.InstantiateNextBoss();
     }
+
+    private void GameRestart()
+    {
+        //TODO::リスタート用の処理
+        GameInitialize();
+    }
+
+    private void GameEnd()
+    {
+        Player.gameObject.SetActive(false);
+        BossManager.Instance?.GameEnd();
+    }
+
+    #region Set Function
 
     public void SetEnemy(GameObject enemy)
     {
@@ -82,5 +103,33 @@ public class GameManager : MonoBehaviour
     }
 
     public float GetNowTime() { return GameTime; }
+
+    public void GameStart()
+    {
+        //ゲームスタート処理
+        isNowGame = true;
+        GameInitialize();
+    }
+
+    public void GameClear()
+    {
+        //ゲームクリア時処理
+        gameClearEvent.Invoke();
+        GameEnd();
+    }
+
+    public void GameOver()
+    {
+        //ゲームオーバー時処理
+        gameOverEvent.Invoke();
+        GameEnd();
+    }
+
+    public void Restart()
+    {
+        //リスタート処理
+        isNowGame = true;
+        GameRestart();
+    }
     #endregion
 }
