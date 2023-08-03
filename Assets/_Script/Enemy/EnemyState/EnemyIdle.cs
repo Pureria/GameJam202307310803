@@ -91,6 +91,10 @@ public class EnemyIdle : EnemyState
                 stateMachine.ChangeState(enemy.OneLaserState);
                 break;
 
+            case EnemyData.AttackType.PlayerSearchShot:
+                stateMachine.ChangeState(enemy.PlayerSearchShotState);
+                break;
+
             default:
                 break;
         }

@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI GameTimeText;
 
     public static GameManager Instance;
-    public GameObject Player { get; private set; }
+    public GameObject Player;
     public GameObject Enemy { get; private set; }
 
     public bool isNowGame { get; private set; }
@@ -27,10 +27,15 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
             Instance = this;
         else
-            GameObject.Destroy(this);
+            GameObject.Destroy(this);      
     }
 
     private void Start()
+    {
+        InitializeData();
+    }
+
+    void InitializeData ()
     {
         isNowGame = false;
     }
