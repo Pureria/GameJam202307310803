@@ -12,7 +12,14 @@ public class BossManager : MonoBehaviour
 
     private GameObject nowBoss;
 
+    
     private int nowBossCount;
+
+    public int NowBossCount
+    {
+        get { return this.nowBossCount; }
+    }
+
 
     private void Awake()
     {
