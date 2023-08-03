@@ -42,6 +42,7 @@ public class BossManager : MonoBehaviour
     {
         if (nowBossCount > BossPrefab.Count) return;
         nowBoss = Instantiate(BossPrefab[nowBossCount], Vector3.zero, Quaternion.identity);
+        nowBoss.transform.position = BossPrefab[nowBossCount].transform.position;
         nowBossCount++;
 
         if (nowBossCount < BossPrefab.Count)
