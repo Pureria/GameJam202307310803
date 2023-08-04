@@ -16,6 +16,7 @@ namespace GJ.Health
         [SerializeField] private UnityEvent onDeath;
 
         [SerializeField] private float health;
+        public float Health { get { return health; } }
 
 
         public UnityEvent OnDeath { get { return this.onDeath; } }
