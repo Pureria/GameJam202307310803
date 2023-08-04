@@ -47,6 +47,9 @@ TagManager:
   - name: Frame
     uniqueID: 2376482567
     locked: 0
+  - name: EnemyHead
+    uniqueID: 2999081123
+    locked: 0
   - name: EnemyShot
     uniqueID: 287339317
     locked: 0

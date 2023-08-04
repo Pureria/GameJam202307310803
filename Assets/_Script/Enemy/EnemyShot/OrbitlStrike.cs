@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OrbitlStrike : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class OrbitlStrike : MonoBehaviour
     private Color searchColor;
     [SerializeField]
     private Color attackColor;
+    [SerializeField]
+    private Sprite fireSprite;
     [SerializeField]
     private float searchTime;
     [SerializeField]
@@ -41,6 +44,8 @@ public class OrbitlStrike : MonoBehaviour
             if(startTime + searchTime < Time.time)
             {
                 isSearch = false;
+                sprite.transform.localScale = new Vector3(1, 1, 1);
+                sprite.sprite = fireSprite;
                 startTime = Time.time;
                 sprite.color = attackColor;
                 shotMove.SetCanMove(false);

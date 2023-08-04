@@ -50,11 +50,11 @@ MonoBehaviour:
       position: 1
       nextStateInterval: 0
     - type: 1
-      position: 4
+      position: 2
       nextStateInterval: 1
     - type: 1
-      position: 3
+      position: 1
       nextStateInterval: 0
     - type: 1
-      position: 4
+      position: 2
       nextStateInterval: 3

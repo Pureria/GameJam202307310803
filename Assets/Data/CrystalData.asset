@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 790d8e30b14185444b47964310d98287, type: 3}
   m_Name: CrystalData
   m_EditorClassIdentifier: 
-  CrystalSpeed: 0.02
+  CrystalSpeed: 0.03
   CrystalMoveDeadZone: 0.2
   CrystalFrashInterval: 0.1

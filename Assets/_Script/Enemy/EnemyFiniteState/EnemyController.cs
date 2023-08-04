@@ -128,12 +128,6 @@ public class EnemyController : MonoBehaviour
             stateMachine.ChangeState(DeadState);
         }
 
-        //デバッグ用
-        if(Input.GetKey(KeyCode.UpArrow))
-        {
-            Damage?.AddDamage(5.0f);
-        }
-
         if(!enemyData.SpawnEnemyHeart)
         {
             if(startTime + enemyData.RunAwayTime < Time.time)

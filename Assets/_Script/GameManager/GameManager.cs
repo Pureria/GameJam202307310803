@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
+using GJ.Health;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] UnityEvent gameStart;
     [SerializeField] UnityEvent gameClearEvent;
     [SerializeField] UnityEvent gameOverEvent;
+    [SerializeField] HealthTime playerHealth;
 
     public static GameManager Instance;
     public PlayerController Player;
@@ -49,28 +51,17 @@ public class GameManager : MonoBehaviour
         
         if(isNowGame)
         {
-            GameTime = MaxTime - (Time.time - GameStartTime);
-            GameTimeText.text = GameTime.ToString("n2");
+            //GameTime = MaxTime - (Time.time - GameStartTime);
+            GameTimeText.text = playerHealth.Health.ToString("n2");
 
+            /*
             if(GameTime < 0)
             {
                 //ゲームオーバー処理
                 isNowGame = false;
                 debugNowGame = false;                
             }
-        }
-
-        //TODO::デバッグ用
-        if(debugNowGame && !isNowGame)
-        {
-            isNowGame = true;
-            GameStartTime = Time.time;
-            GameTimeText.enabled = true;
-        }
-        else if(!debugNowGame && isNowGame)
-        {
-            isNowGame = false;
-            GameTimeText.enabled = false;
+            */
         }
     }
 
